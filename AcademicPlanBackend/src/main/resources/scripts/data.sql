@@ -164,8 +164,9 @@ CREATE TABLE IF NOT EXISTS explanatory_notes
 (
     id         bigint(20)   NOT NULL,
     date       date         NOT NULL,
-    text       varchar(255) NOT NULL,
-    subject_id bigint(20)   NOT NULL,
+    text       varchar(255) DEFAULT NULL,
+    name       varchar(100) NOT NULL,
+    subject_id bigint(20)   DEFAULT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (subject_id) REFERENCES subjects (id)
 );

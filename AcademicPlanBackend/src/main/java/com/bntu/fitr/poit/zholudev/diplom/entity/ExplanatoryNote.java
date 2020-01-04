@@ -14,6 +14,7 @@ public class ExplanatoryNote {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String name;
     private String text;
     private Date date;
     @ManyToOne
@@ -126,6 +127,14 @@ public class ExplanatoryNote {
 
     public void setCompetences(Set<Competence> competences) {
         this.competences = competences;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Set<DiagnosticTool> getDiagnosticTools() {

@@ -7,6 +7,9 @@ import { FooterComponent } from './component/footer/footer.component';
 import {RouterModule, Routes} from '@angular/router';
 import { CreatePlanComponent } from './component/create-plan/create-plan.component';
 import { JumbotronComponent } from './component/jumbotron/jumbotron.component';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { SubjectComponent } from './component/subject/subject.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'jumbotron', pathMatch: 'full'},
@@ -21,12 +24,15 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     CreatePlanComponent,
-    JumbotronComponent
+    JumbotronComponent,
+    SubjectComponent
   ],
   exports: [RouterModule],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

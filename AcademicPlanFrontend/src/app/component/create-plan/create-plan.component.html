@@ -1,7 +1,9 @@
 <div class="container">
   <div class="form-group row justify-content-center">
     <div class="col-lg-10">
-      <input type="text" class="form-control" placeholder="Название предмета" aria-label="Название предмета">
+      <input type="text" name="name" [(ngModel)]="explanatoryNote.name" #name="ngModel" class="form-control"
+             placeholder="Название работы (не предмет)">
     </div>
+    <button type="button" class="btn btn-outline-primary" (click)="createNote()">Создать план</button>
   </div>
 </div>
