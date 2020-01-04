@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
 @RestController
 @RequestMapping(value = "/api/" + EntityConstants.ACADEMIC_NAME)
 public class AcademicController extends EntityController<Academic> {
