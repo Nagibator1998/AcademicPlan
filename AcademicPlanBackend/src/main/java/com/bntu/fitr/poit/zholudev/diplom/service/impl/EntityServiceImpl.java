@@ -20,6 +20,11 @@ public class EntityServiceImpl<T> implements EntityService<T> {
     }
 
     @Override
+    public Iterable<T> getAll() {
+        return this.repository.findAll();
+    }
+
+    @Override
     public T update(T t) {
         return this.repository.save(t);
     }

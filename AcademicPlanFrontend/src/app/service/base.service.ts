@@ -21,6 +21,10 @@ export class BaseService<T> {
     return this.httpClient.get<T>('/api' + this._urlPath + '/' + id);
   }
 
+  public getAll(): Observable<T[]>{
+    return this.httpClient.get<T[]>('/api' + this._urlPath);
+  }
+
   public update(entity: T): Observable<T> {
     return this.httpClient.put<T>('/api' + this._urlPath, entity);
   }

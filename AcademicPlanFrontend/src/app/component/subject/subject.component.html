@@ -1,1 +1,13 @@
-<p>subject works!</p>
+<div class="container">
+  <div class="form-group row justify-content-center">
+    <div class="col-lg-10">
+      <ng-autocomplete [data]="subjects" [searchKeyword]="'name'" [itemTemplate]="itemTemplate" [(ngModel)]="subject.name"
+                       placeHolder="Enter the Country Name"></ng-autocomplete>
+    </div>
+    <button type="button" class="btn btn-outline-primary" (click)="createSubject()">Продолжить</button>
+  </div>
+</div>
+
+<ng-template #itemTemplate let-item>
+  <a [innerHTML]="item.name"></a>
+</ng-template>

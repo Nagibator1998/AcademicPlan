@@ -5,7 +5,7 @@ import com.bntu.fitr.poit.zholudev.diplom.service.EntityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-public class EntityController<T>{
+public class EntityController<T> {
 
     EntityService<T> service;
 
@@ -31,5 +31,11 @@ public class EntityController<T>{
     public ResponseEntity update(@RequestBody T t) {
         T updatedT = this.service.update(t);
         return ResponseEntity.ok(updatedT);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity getAll() {
+        Iterable<T> allT = this.service.getAll();
+        return ResponseEntity.ok(allT);
     }
 }

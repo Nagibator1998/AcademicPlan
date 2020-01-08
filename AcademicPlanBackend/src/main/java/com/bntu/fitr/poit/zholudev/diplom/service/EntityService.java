@@ -4,6 +4,7 @@ public interface EntityService<T> {
 
     T save(T t);
     T getById(Long id);
+    Iterable<T> getAll();
     T update(T t);
     void delete(Long id);
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -7,14 +7,21 @@ import { FooterComponent } from './component/footer/footer.component';
 import {RouterModule, Routes} from '@angular/router';
 import { CreatePlanComponent } from './component/create-plan/create-plan.component';
 import { JumbotronComponent } from './component/jumbotron/jumbotron.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { SubjectComponent } from './component/subject/subject.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import {Constants} from './const/constants';
+import { DepartmentComponent } from './component/department/department.component';
+
 
 const routes: Routes = [
-  {path: '', redirectTo: 'jumbotron', pathMatch: 'full'},
-  {path: 'create-plan', component: CreatePlanComponent},
-  {path: 'jumbotron', component: JumbotronComponent},
+  {path: '', redirectTo: Constants.JUMBOTRON_ROUTE_PATH, pathMatch: 'full'},
+  {path: Constants.CREATE_PLAN_ROUTE_PATH, component: CreatePlanComponent},
+  {path: Constants.JUMBOTRON_ROUTE_PATH, component: JumbotronComponent},
+  {path: Constants.SUBJECT_ROUTE_PATH, component: SubjectComponent},
+  {path: Constants.DEPARTMENT_ROUTE_PATH, component: DepartmentComponent},
   {path: '*', redirectTo: '/'}
 ];
 
@@ -25,16 +32,21 @@ const routes: Routes = [
     FooterComponent,
     CreatePlanComponent,
     JumbotronComponent,
-    SubjectComponent
+    SubjectComponent,
+    DepartmentComponent
   ],
   exports: [RouterModule],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    AutocompleteLibModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

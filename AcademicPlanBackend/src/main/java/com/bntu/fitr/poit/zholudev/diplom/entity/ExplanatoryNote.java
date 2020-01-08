@@ -17,7 +17,7 @@ public class ExplanatoryNote {
     private String name;
     private String text;
     private Date date;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Subject subject;
     @OneToMany(mappedBy = "id")
     private Set<Competence> competences;
