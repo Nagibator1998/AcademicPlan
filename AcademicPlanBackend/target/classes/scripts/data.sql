@@ -78,9 +78,9 @@ CREATE TABLE IF NOT EXISTS competence_codes
 CREATE TABLE IF NOT EXISTS course_projects
 (
     id             bigint(20)   NOT NULL,
-    count_of_hours bigint(20)   NOT NULL,
-    count_of_pages bigint(20)   NOT NULL,
-    goal           varchar(255) NOT NULL,
+    count_of_hours bigint(20)   DEFAULT NULL,
+    count_of_pages bigint(20)   DEFAULT NULL,
+    goal           varchar(255) DEFAULT NULL,
     PRIMARY KEY (id)
 );
 
@@ -106,44 +106,75 @@ CREATE TABLE IF NOT EXISTS student_musts
 
 CREATE TABLE IF NOT EXISTS universities
 (
-    id                                  bigint(20)   NOT NULL,
-    abbreviation                        varchar(10) DEFAULT NULL,
-    name                                varchar(255) NOT NULL,
-    vice_rector_for_educational_work_id bigint(20)   NOT NULL,
-    PRIMARY KEY (id)
+    id           bigint(20)   NOT NULL AUTO_INCREMENT,
+    abbreviation varchar(10) DEFAULT NULL,
+    name         varchar(255) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY (abbreviation),
+    UNIQUE KEY (name)
 );
+
+
+INSERT INTO universities (abbreviation, name)
+VALUES ('БНТУ', 'Белорусский национальный технический университет');
+INSERT INTO universities (abbreviation, name)
+VALUES ('БГУ', 'Белорусский государственный университет');
+INSERT INTO universities (abbreviation, name)
+VALUES ('БГУИР', 'Белорусский государственный университет информатики и радиоэлектроники');
 
 CREATE TABLE IF NOT EXISTS faculties
 (
-    id                                bigint(20)   NOT NULL,
-    abbreviation                      varchar(10) DEFAULT NULL,
-    name                              varchar(255) NOT NULL,
-    university_id                     bigint(20)   NOT NULL,
-    methodical_commission_chairman_id bigint(20)   NOT NULL,
+    id            bigint(20)   NOT NULL AUTO_INCREMENT,
+    abbreviation  varchar(10) DEFAULT NULL,
+    name          varchar(255) NOT NULL,
+    university_id bigint(20)   NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (university_id) REFERENCES universities (id)
 );
 
+INSERT INTO faculties (abbreviation, name, university_id)
+VALUES ('ФИТР', 'Факультет информационных технологий и робототехники', 1);
+INSERT INTO faculties (abbreviation, name, university_id)
+VALUES ('АТФ', 'Автотракторный факультет', 1);
+INSERT INTO faculties (abbreviation, name, university_id)
+VALUES ('ЭФ', 'Энергетический факультет', 1);
+
 CREATE TABLE IF NOT EXISTS departments
 (
-    id         bigint(20)   NOT NULL,
-    faculty_id bigint(20)   NOT NULL,
-    name       varchar(255) NOT NULL,
+    id           bigint(20)   NOT NULL AUTO_INCREMENT,
+    name         varchar(255) NOT NULL,
+    abbreviation varchar(10)  NOT NULL,
+    faculty_id   bigint(20)   NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (faculty_id) REFERENCES faculties (id)
 );
 
+INSERT INTO departments (abbreviation, name, faculty_id)
+VALUES ('ПОИСиТ', 'Программное обеспечение информационных систем и технологий', 1);
+INSERT INTO departments (abbreviation, name, faculty_id)
+VALUES ('ЭАПУиТК', 'Электропривод и автоматизация промышленных установок и технологических комплексов', 1);
+INSERT INTO departments (abbreviation, name, faculty_id)
+VALUES ('РТС', 'Роботехнические системы', 1);
+
 CREATE TABLE IF NOT EXISTS specialities
 (
-    id            bigint(20)   NOT NULL,
+    id            bigint(20)   NOT NULL AUTO_INCREMENT,
     code          varchar(255) NOT NULL,
     department_id bigint(20)   NOT NULL,
     direction     bit(1)       NOT NULL,
     full_time     bit(1)       NOT NULL,
     name          varchar(255) NOT NULL,
+    abbreviation  varchar(10)  NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (department_id) REFERENCES departments (id)
 );
+
+INSERT INTO specialities (code, department_id, direction, full_time, name, abbreviation)
+VALUES ('1-40 01 01', 1, 0, 1, 'Программное обеспечение информационных технологий', 'ПОИТ');
+INSERT INTO specialities (code, department_id, direction, full_time, name, abbreviation)
+VALUES ('1-40 01 01', 1, 0, 0, 'Программное обеспечение информационных технологий', 'ПОИТ');
+INSERT INTO specialities (code, department_id, direction, full_time, name, abbreviation)
+VALUES ('1-40 05 01', 1, 0, 1, 'Информационные системы и технологии', 'ИСиТ');
 
 CREATE TABLE IF NOT EXISTS academics
 (

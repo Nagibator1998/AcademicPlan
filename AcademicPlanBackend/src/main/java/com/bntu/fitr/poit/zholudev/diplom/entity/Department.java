@@ -12,11 +12,20 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String abbreviation;
     private Long facultyId;
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "departmentId")
     private Set<Speciality> specialities;
 
     public Department() {
+    }
+
+    public String getAbbreviation() {
+        return abbreviation;
+    }
+
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
     }
 
     public Long getId() {

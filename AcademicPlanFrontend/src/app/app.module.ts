@@ -13,7 +13,7 @@ import { SubjectComponent } from './component/subject/subject.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {Constants} from './const/constants';
-import { DepartmentComponent } from './component/department/department.component';
+import { ActiveSpecialityComponent } from './component/active-speciality/active-speciality.component';
 
 
 const routes: Routes = [
@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: Constants.CREATE_PLAN_ROUTE_PATH, component: CreatePlanComponent},
   {path: Constants.JUMBOTRON_ROUTE_PATH, component: JumbotronComponent},
   {path: Constants.SUBJECT_ROUTE_PATH, component: SubjectComponent},
-  {path: Constants.DEPARTMENT_ROUTE_PATH, component: DepartmentComponent},
+  {path: Constants.ACTIVE_SPECIALITY_ROUTE_PATH, component: ActiveSpecialityComponent},
   {path: '*', redirectTo: '/'}
 ];
 
@@ -33,7 +33,7 @@ const routes: Routes = [
     CreatePlanComponent,
     JumbotronComponent,
     SubjectComponent,
-    DepartmentComponent
+    ActiveSpecialityComponent
   ],
   exports: [RouterModule],
   imports: [

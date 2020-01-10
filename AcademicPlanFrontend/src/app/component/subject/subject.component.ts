@@ -22,7 +22,7 @@ export class SubjectComponent implements OnInit {
     this.subjectService.getAll().subscribe(data => {
       this.subjects = data;
     });
-    this.explanatoryNoteService.get(parseInt(localStorage.getItem(Constants.EXPLANATORY_NOTE_IS_STRING))).subscribe(data => {
+    this.explanatoryNoteService.get(parseInt(localStorage.getItem(Constants.EXPLANATORY_NOTE_ID_STRING))).subscribe(data => {
       this.explanatoryNote = data;
     })
   }
@@ -30,7 +30,7 @@ export class SubjectComponent implements OnInit {
   private createSubject(){
     this.explanatoryNote.subject = this.subject;
     this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
-      this.router.navigate([Constants.DEPARTMENT_ROUTE_PATH]);
+      this.router.navigate([Constants.ACTIVE_SPECIALITY_ROUTE_PATH]);
     })
   }
 }

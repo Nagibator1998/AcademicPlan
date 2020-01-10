@@ -16,7 +16,7 @@ public class Faculty {
     private Long universityId;
     @OneToOne
     private Academic methodicalCommissionChairman;
-    @OneToMany
+    @OneToMany(mappedBy = "facultyId")
     private Set<Department> departments;
 
 
