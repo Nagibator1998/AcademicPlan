@@ -4,6 +4,8 @@ import com.bntu.fitr.poit.zholudev.diplom.service.EntityService;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EntityServiceImpl<T> implements EntityService<T> {
 
@@ -32,5 +34,10 @@ public class EntityServiceImpl<T> implements EntityService<T> {
     @Override
     public void delete(Long id) {
         this.repository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<T> saveAll(List<T> allT) {
+        return this.repository.saveAll(allT);
     }
 }

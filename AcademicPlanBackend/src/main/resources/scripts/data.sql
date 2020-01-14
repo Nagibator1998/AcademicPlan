@@ -1,23 +1,38 @@
 CREATE TABLE IF NOT EXISTS academic_degrees
 (
-    id   bigint(20)   NOT NULL,
+    id   bigint(20)   NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
+
+INSERT INTO academic_degrees (name)
+VALUES ('Кандидат наук');
+INSERT INTO academic_degrees (name)
+VALUES ('Доктор наук');
 
 CREATE TABLE IF NOT EXISTS academic_ranks
 (
-    id   bigint(20)   NOT NULL,
+    id   bigint(20)   NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
+INSERT INTO academic_ranks (name)
+VALUES ('Профессор');
+INSERT INTO academic_ranks (name)
+VALUES ('Доцент');
+
 CREATE TABLE IF NOT EXISTS positions
 (
-    id   bigint(20)   NOT NULL,
+    id   bigint(20)   NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
+
+INSERT INTO positions (name)
+VALUES ('Заведующий кафедрой');
+INSERT INTO positions (name)
+VALUES ('Доцент кафедры');
 
 CREATE TABLE IF NOT EXISTS subjects
 (
@@ -77,7 +92,7 @@ CREATE TABLE IF NOT EXISTS competence_codes
 
 CREATE TABLE IF NOT EXISTS course_projects
 (
-    id             bigint(20)   NOT NULL,
+    id             bigint(20) NOT NULL,
     count_of_hours bigint(20)   DEFAULT NULL,
     count_of_pages bigint(20)   DEFAULT NULL,
     goal           varchar(255) DEFAULT NULL,
@@ -178,18 +193,21 @@ VALUES ('1-40 05 01', 1, 0, 1, 'Информационные системы и �
 
 CREATE TABLE IF NOT EXISTS academics
 (
-    id                 bigint(20) NOT NULL,
-    full_name          varchar(255) DEFAULT NULL,
-    academic_degree_id bigint(20)   DEFAULT NULL,
-    academic_rank_id   bigint(20)   DEFAULT NULL,
-    department_id      bigint(20) NOT NULL,
-    position_id        bigint(20) NOT NULL,
+    id                 bigint(20)   NOT NULL AUTO_INCREMENT,
+    full_name          varchar(255) NOT NULL,
+    academic_degree_id bigint(20) DEFAULT NULL,
+    academic_rank_id   bigint(20) DEFAULT NULL,
+    department_id      bigint(20)   NOT NULL,
+    position_id        bigint(20)   NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (academic_rank_id) REFERENCES academic_ranks (id),
     FOREIGN KEY (position_id) REFERENCES positions (id),
     FOREIGN KEY (academic_degree_id) REFERENCES academic_degrees (id),
     FOREIGN KEY (department_id) REFERENCES departments (id)
 );
+
+INSERT INTO academics (full_name, academic_degree_id, academic_rank_id, department_id, position_id)
+VALUES ('Гурский Николай Николаевич', 1, 1, 1, 1);
 
 CREATE TABLE IF NOT EXISTS explanatory_notes
 (
@@ -273,7 +291,7 @@ CREATE TABLE IF NOT EXISTS control_questions
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id)
 );
 
-CREATE TABLE IF NOT EXISTS course_project_course_project_tasks
+CREATE TABLE IF NOT EXISTS course_projects_course_project_tasks
 (
     course_project_id      bigint(20) NOT NULL,
     course_project_task_id bigint(20) NOT NULL,
@@ -282,7 +300,7 @@ CREATE TABLE IF NOT EXISTS course_project_course_project_tasks
     FOREIGN KEY (course_project_task_id) REFERENCES course_project_tasks (id)
 );
 
-CREATE TABLE IF NOT EXISTS creators
+CREATE TABLE IF NOT EXISTS explanatory_notes_creators
 (
     explanatory_note_id bigint(20) NOT NULL,
     academic_id         bigint(20) NOT NULL,
@@ -302,7 +320,7 @@ CREATE TABLE IF NOT EXISTS competences
     FOREIGN KEY (competence_code_id) REFERENCES competence_codes (id)
 );
 
-CREATE TABLE IF NOT EXISTS explanatory_note_additional_literature
+CREATE TABLE IF NOT EXISTS explanatory_notes_additional_literature
 (
     explanatory_note_id bigint(20) NOT NULL,
     literature_id       bigint(20) NOT NULL,
@@ -311,7 +329,7 @@ CREATE TABLE IF NOT EXISTS explanatory_note_additional_literature
     FOREIGN KEY (literature_id) REFERENCES literature (id)
 );
 
-CREATE TABLE IF NOT EXISTS explanatory_note_basic_literature
+CREATE TABLE IF NOT EXISTS explanatory_notes_basic_literature
 (
     explanatory_note_id bigint(20) NOT NULL,
     literature_id       bigint(20) NOT NULL,
@@ -320,7 +338,7 @@ CREATE TABLE IF NOT EXISTS explanatory_note_basic_literature
     FOREIGN KEY (literature_id) REFERENCES literature (id)
 );
 
-CREATE TABLE IF NOT EXISTS explanatory_note_competence
+CREATE TABLE IF NOT EXISTS explanatory_notes_competences
 (
     explanatory_note_id bigint(20) NOT NULL,
     competence_id       bigint(20) NOT NULL,
@@ -329,7 +347,7 @@ CREATE TABLE IF NOT EXISTS explanatory_note_competence
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id)
 );
 
-CREATE TABLE IF NOT EXISTS explanatory_note_diagnostic_tool
+CREATE TABLE IF NOT EXISTS explanatory_notes_diagnostic_tools
 (
     explanatory_note_id bigint(20) NOT NULL,
     diagnostic_tool_id  bigint(20) NOT NULL,
@@ -338,7 +356,7 @@ CREATE TABLE IF NOT EXISTS explanatory_note_diagnostic_tool
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id)
 );
 
-CREATE TABLE IF NOT EXISTS explanatory_note_independent_work_form
+CREATE TABLE IF NOT EXISTS explanatory_notes_independent_work_forms
 (
     explanatory_note_id      bigint(20) NOT NULL,
     independent_work_form_id bigint(20) NOT NULL,
@@ -347,7 +365,7 @@ CREATE TABLE IF NOT EXISTS explanatory_note_independent_work_form
     FOREIGN KEY (independent_work_form_id) REFERENCES independent_work_forms (id)
 );
 
-CREATE TABLE IF NOT EXISTS explanatory_note_standard
+CREATE TABLE IF NOT EXISTS explanatory_notes_standards
 (
     explanatory_note_id bigint(20) NOT NULL,
     standard_id         bigint(20) NOT NULL,
@@ -356,7 +374,7 @@ CREATE TABLE IF NOT EXISTS explanatory_note_standard
     FOREIGN KEY (standard_id) REFERENCES standards (id)
 );
 
-CREATE TABLE IF NOT EXISTS explanatory_note_student_must
+CREATE TABLE IF NOT EXISTS explanatory_notes_student_musts
 (
     explanatory_note_id bigint(20) NOT NULL,
     student_must_id     bigint(20) NOT NULL,
@@ -365,7 +383,7 @@ CREATE TABLE IF NOT EXISTS explanatory_note_student_must
     FOREIGN KEY (student_must_id) REFERENCES student_musts (id)
 );
 
-CREATE TABLE IF NOT EXISTS reviewers
+CREATE TABLE IF NOT EXISTS explanatory_notes_reviewers
 (
     explanatory_note_id bigint(20) NOT NULL,
     academic_id         bigint(20) NOT NULL,

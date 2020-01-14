@@ -17,9 +17,9 @@ public class ActiveSpeciality {
     private Long course;
     private Long semester;
     private Boolean exam;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private CourseProject courseProject;
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "activeSpecialityId")
     private Set<ActiveTopic> activeTopics;
 
     public ActiveSpeciality() {

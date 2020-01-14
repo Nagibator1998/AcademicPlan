@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 
 @Entity
-@Table(name = "active_topic")
+@Table(name = "active_topics")
 public class ActiveTopic {
 
     @Id

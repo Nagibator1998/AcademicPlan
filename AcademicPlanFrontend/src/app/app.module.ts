@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {Constants} from './const/constants';
 import { ActiveSpecialityComponent } from './component/active-speciality/active-speciality.component';
+import { AcademicComponent } from './component/academic/academic.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
     CreatePlanComponent,
     JumbotronComponent,
     SubjectComponent,
-    ActiveSpecialityComponent
+    ActiveSpecialityComponent,
+    AcademicComponent
   ],
   exports: [RouterModule],
   imports: [

@@ -8,7 +8,7 @@ export class ActiveSpeciality {
   speciality: Speciality;
   course: number;
   semester: number;
-  exam: boolean;
+  exam: boolean = false;
   courseProject: CourseProject
 
 }

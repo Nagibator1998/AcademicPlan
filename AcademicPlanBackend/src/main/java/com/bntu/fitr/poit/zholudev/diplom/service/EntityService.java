@@ -1,5 +1,7 @@
 package com.bntu.fitr.poit.zholudev.diplom.service;
 
+import java.util.List;
+
 public interface EntityService<T> {
 
     T save(T t);
@@ -7,4 +9,5 @@ public interface EntityService<T> {
     Iterable<T> getAll();
     T update(T t);
     void delete(Long id);
+    Iterable<T> saveAll(List<T> allT);
 }

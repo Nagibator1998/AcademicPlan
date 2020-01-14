@@ -51,7 +51,7 @@
         <input type="checkbox" [(ngModel)]="activeSpeciality.exam">
       </td>
       <td>
-        <input type="checkbox" [checked]="activeSpeciality.courseProject != null">
+        <input type="checkbox" (change)="setCourseProject($event, activeSpeciality)">
       </td>
       <td>
         <button type="button" (click)="deleteActiveSpeciality(activeSpeciality)">Удалить</button>
@@ -59,7 +59,7 @@
     </tr>
     </tbody>
   </table>
-
+  <button type="button" (click)="saveActiveSpecialities()">Продолжить</button>
 </div>
 
 <ng-template #specialityTemplate let-item>

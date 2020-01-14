@@ -19,23 +19,25 @@ public class ExplanatoryNote {
     private Date date;
     @ManyToOne(cascade = CascadeType.ALL)
     private Subject subject;
-    @OneToMany(mappedBy = "id")
+    @ManyToMany()
     private Set<Competence> competences;
-    @OneToMany(mappedBy = "id")
+    @ManyToMany()
     private Set<DiagnosticTool> diagnosticTools;
-    @OneToMany(mappedBy = "id")
+    @ManyToMany()
     private Set<IndependentWorkForm> independentWorkForms;
-    @OneToMany(mappedBy = "id")
+    @ManyToMany()
     private Set<Literature> basicLiterature;
-    @OneToMany(mappedBy = "id")
+    @ManyToMany()
     private Set<Literature> additionalLiterature;
-    @OneToMany(mappedBy = "id")
+    @ManyToMany()
     private Set<StudentMustEntity> studentMusts;
-    @OneToMany(mappedBy = "id")
+    @ManyToMany()
     private Set<Academic> reviewers;
-    @OneToMany(mappedBy = "id")
+    @ManyToMany()
+    private Set<Academic> creators;
+    @ManyToMany()
     private Set<Standard> standards;
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "explanatoryNoteId")
     private Set<ActiveSpeciality> activeSpecialities;
     @OneToMany(mappedBy = "id")
     private Set<ControlQuestion> controlQuestions;
@@ -43,8 +45,6 @@ public class ExplanatoryNote {
     private Set<LaboratoryWork> laboratoryWorks;
     @OneToMany(mappedBy = "id")
     private Set<Section> sections;
-    @OneToMany(mappedBy = "id")
-    private Set<Academic> creators;
 
     public ExplanatoryNote() {
     }

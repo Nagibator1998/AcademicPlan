@@ -11,14 +11,24 @@ public class Academic {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String fullName;
-    @ManyToOne
+    @ManyToOne()
     private AcademicRank academicRank;
-    @ManyToOne
+    @ManyToOne()
     private AcademicDegree academicDegree;
-    @ManyToOne
+    @ManyToOne()
     private Position position;
+    private Long departmentId;
+
 
     public Academic() {
+    }
+
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
     }
 
     public Long getId() {

@@ -6,6 +6,9 @@ import {Department} from '../../entity/department';
 import {Speciality} from '../../entity/speciality';
 import {ActiveSpeciality} from '../../entity/active-speciality';
 import {Constants} from '../../const/constants';
+import {CourseProject} from '../../entity/course-project';
+import {ActiveSpecialityService} from '../../service/active-speciality.service';
+import {CourseProjectService} from '../../service/course-project.service';
 
 @Component({
   selector: 'app-department',
@@ -19,11 +22,13 @@ export class ActiveSpecialityComponent implements OnInit {
   departments: Department[] = null;
   specialities: Speciality[] = null;
   activeSpecialities: ActiveSpeciality[] = null;
+  courseProject: CourseProject = new CourseProject();
   @ViewChild('ngFaculties', {static: false}) facultiesForm;
   @ViewChild('ngDepartments', {static: false}) departmentsForm;
   @ViewChild('ngSpecialities', {static: false}) specialitiesForm;
 
-  constructor(private universityService: UniversityService) {
+  constructor(private universityService: UniversityService, private activeSpecialityService: ActiveSpecialityService,
+              private courseProjectService: CourseProjectService) {
   }
 
   ngOnInit() {
@@ -63,13 +68,28 @@ export class ActiveSpecialityComponent implements OnInit {
   }
 
   setActiveSpecialities(item: Speciality) {
-    let activeSpeciality = new ActiveSpeciality();
-    activeSpeciality.speciality = item;
-    activeSpeciality.explanatoryNoteId = parseInt(localStorage.getItem(Constants.EXPLANATORY_NOTE_ID_STRING));
-    this.activeSpecialities.push(activeSpeciality);
+    let addActiveSpeciality = new ActiveSpeciality();
+    addActiveSpeciality.speciality = item;
+    addActiveSpeciality.explanatoryNoteId = parseInt(localStorage.getItem(Constants.EXPLANATORY_NOTE_ID_STRING));
+    this.activeSpecialities.push(addActiveSpeciality);
   }
 
-  deleteActiveSpeciality(activeSpeciality: ActiveSpeciality){
+  deleteActiveSpeciality(activeSpeciality: ActiveSpeciality) {
     this.activeSpecialities.splice(this.activeSpecialities.indexOf(activeSpeciality), 1);
   }
+
+  setCourseProject(item, activeSpeciality: ActiveSpeciality) {
+    if (item.target.checked) {
+      activeSpeciality.courseProject = this.courseProject;
+    } else {
+      activeSpeciality.courseProject = null;
+    }
+  }
+
+  saveActiveSpecialities() {
+    this.activeSpecialityService.saveAll(this.activeSpecialities).subscribe(data => {
+      this.activeSpecialities = data;
+    });
+  }
+
 }

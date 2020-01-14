@@ -5,6 +5,8 @@ import com.bntu.fitr.poit.zholudev.diplom.service.EntityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 public class EntityController<T> {
 
     EntityService<T> service;
@@ -36,6 +38,12 @@ public class EntityController<T> {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getAll() {
         Iterable<T> allT = this.service.getAll();
+        return ResponseEntity.ok(allT);
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.POST)
+    public ResponseEntity saveAll(@RequestBody List<T> t) {
+        Iterable allT = this.service.saveAll(t);
         return ResponseEntity.ok(allT);
     }
 }

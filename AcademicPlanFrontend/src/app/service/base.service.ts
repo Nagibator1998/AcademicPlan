@@ -33,4 +33,8 @@ export class BaseService<T> {
     return this.httpClient.delete<void>('/api' + this._urlPath + '/' + id);
   }
 
+  public saveAll(entities: T[]): Observable<T[]>{
+    return this.httpClient.post<T[]>('/api' + this._urlPath + '/all', entities);
+  }
+
 }
