@@ -4,6 +4,5 @@ export class Subject {
   name: string;
 
   constructor(){
-    this.name = "";
   }
 }

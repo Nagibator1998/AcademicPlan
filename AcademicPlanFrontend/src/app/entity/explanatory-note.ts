@@ -1,4 +1,6 @@
 import {Subject} from './subject';
+import {Academic} from './academic';
+import {Standard} from './standard';
 
 export class ExplanatoryNote {
 
@@ -7,5 +9,8 @@ export class ExplanatoryNote {
   text: string;
   date: Date;
   subject: Subject;
+  reviewers: Academic[];
+  creators: Academic[];
+  standards: Standard[];
 
 }

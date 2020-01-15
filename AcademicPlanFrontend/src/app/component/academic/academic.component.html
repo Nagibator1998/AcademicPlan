@@ -3,7 +3,7 @@
     <div class="col-lg-8">
       <ng-autocomplete [data]="academics" [searchKeyword]="'fullName'" [itemTemplate]="itemTemplate"
                        (selected)="setReviewer($event)"
-                       placeHolder="Учебное заведение"></ng-autocomplete>
+                       placeHolder="Рецензент"></ng-autocomplete>
     </div>
   </div>
   <table class="table text-center">
@@ -20,24 +20,61 @@
     <tr *ngFor="let reviewer of reviewers" class="border-dark">
       <td>{{reviewer.fullName}}</td>
       <td>
-        {{reviewer.academicDegree}}
+        {{reviewer.academicDegree.name}}
       </td>
       <td>
-        {{reviewer.academicRank}}
+        {{reviewer.academicRank.name}}
       </td>
       <td>
-        {{reviewer.position}}
+        {{reviewer.position.name}}
       </td>
       <td>
-        <button type="button">Удалить</button>
+        <button type="button" (click)="deleteFromReviewers(reviewer)">Удалить</button>
       </td>
     </tr>
     </tbody>
   </table>
-  <button type="button">Продолжить</button>
+
+  <div class="form-group row justify-content-center">
+    <div class="col-lg-8">
+      <ng-autocomplete [data]="academics" [searchKeyword]="'fullName'" [itemTemplate]="itemTemplate"
+                       (selected)="setCreator($event)"
+                       placeHolder="Составитель"></ng-autocomplete>
+    </div>
+  </div>
+  <table class="table text-center">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">ФИО составителя</th>
+      <th scope="col">Учёная степень</th>
+      <th scope="col">Учёное звание</th>
+      <th scope="col">Должность</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody class="table-light">
+    <tr *ngFor="let creator of creators" class="border-dark">
+      <td>{{creator.fullName}}</td>
+      <td>
+        {{creator.academicDegree.name}}
+      </td>
+      <td>
+        {{creator.academicRank.name}}
+      </td>
+      <td>
+        {{creator.position.name}}
+      </td>
+      <td>
+        <button type="button" (click)="deleteFromCreators(creator)">Удалить</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button type="button" (click)="saveCreatorsAndReviewers()">Продолжить</button>
 </div>
 
 <ng-template #itemTemplate let-item>
   <a [innerHTML]="item.fullName + ' (' + item.academicDegree.name + ', ' + item.academicRank.name + ')'"></a>
 </ng-template>
-<p>academic works!</p>
+

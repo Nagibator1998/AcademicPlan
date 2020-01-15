@@ -9,6 +9,7 @@ import {Constants} from '../../const/constants';
 import {CourseProject} from '../../entity/course-project';
 import {ActiveSpecialityService} from '../../service/active-speciality.service';
 import {CourseProjectService} from '../../service/course-project.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-department',
@@ -28,7 +29,7 @@ export class ActiveSpecialityComponent implements OnInit {
   @ViewChild('ngSpecialities', {static: false}) specialitiesForm;
 
   constructor(private universityService: UniversityService, private activeSpecialityService: ActiveSpecialityService,
-              private courseProjectService: CourseProjectService) {
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -89,6 +90,7 @@ export class ActiveSpecialityComponent implements OnInit {
   saveActiveSpecialities() {
     this.activeSpecialityService.saveAll(this.activeSpecialities).subscribe(data => {
       this.activeSpecialities = data;
+      this.router.navigate([Constants.ACADEMIC_ROUTE_PATH]);
     });
   }
 

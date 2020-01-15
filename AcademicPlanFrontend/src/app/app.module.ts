@@ -15,6 +15,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {Constants} from './const/constants';
 import { ActiveSpecialityComponent } from './component/active-speciality/active-speciality.component';
 import { AcademicComponent } from './component/academic/academic.component';
+import { StandardComponent } from './component/standard/standard.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,8 @@ const routes: Routes = [
   {path: Constants.JUMBOTRON_ROUTE_PATH, component: JumbotronComponent},
   {path: Constants.SUBJECT_ROUTE_PATH, component: SubjectComponent},
   {path: Constants.ACTIVE_SPECIALITY_ROUTE_PATH, component: ActiveSpecialityComponent},
+  {path: Constants.ACADEMIC_ROUTE_PATH, component: AcademicComponent},
+  {path: Constants.STANDARD_ROUTE_PATH, component: StandardComponent},
   {path: '*', redirectTo: '/'}
 ];
 
@@ -35,7 +38,8 @@ const routes: Routes = [
     JumbotronComponent,
     SubjectComponent,
     ActiveSpecialityComponent,
-    AcademicComponent
+    AcademicComponent,
+    StandardComponent
   ],
   exports: [RouterModule],
   imports: [

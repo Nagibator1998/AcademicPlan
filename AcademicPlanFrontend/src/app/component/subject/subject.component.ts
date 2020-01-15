@@ -16,7 +16,7 @@ export class SubjectComponent implements OnInit {
   private subject: Subject = new Subject();
   private explanatoryNote: ExplanatoryNote = new ExplanatoryNote();
   constructor(private explanatoryNoteService: ExplanatoryNoteService, private router: Router, private subjectService: SubjectService) {}
-  subjects: Subject[];
+  subjects: Subject[] = [];
 
   ngOnInit() {
     this.subjectService.getAll().subscribe(data => {
@@ -32,5 +32,18 @@ export class SubjectComponent implements OnInit {
     this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
       this.router.navigate([Constants.ACTIVE_SPECIALITY_ROUTE_PATH]);
     })
+  }
+
+  setSubject(item: Subject){
+    this.subject = item;
+  }
+
+  clearSubject(){
+    this.subject = new Subject();
+  }
+
+  changeSubject(name: string){
+    this.subject.id = null;
+    this.subject.name = name;
   }
 }

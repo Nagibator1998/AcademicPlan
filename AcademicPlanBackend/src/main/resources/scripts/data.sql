@@ -303,10 +303,10 @@ CREATE TABLE IF NOT EXISTS course_projects_course_project_tasks
 CREATE TABLE IF NOT EXISTS explanatory_notes_creators
 (
     explanatory_note_id bigint(20) NOT NULL,
-    academic_id         bigint(20) NOT NULL,
-    PRIMARY KEY (explanatory_note_id, academic_id),
+    creators_id         bigint(20) NOT NULL,
+    PRIMARY KEY (explanatory_note_id, creators_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),
-    FOREIGN KEY (academic_id) REFERENCES academics (id)
+    FOREIGN KEY (creators_id) REFERENCES academics (id)
 );
 
 CREATE TABLE IF NOT EXISTS competences
@@ -386,9 +386,9 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_student_musts
 CREATE TABLE IF NOT EXISTS explanatory_notes_reviewers
 (
     explanatory_note_id bigint(20) NOT NULL,
-    academic_id         bigint(20) NOT NULL,
-    PRIMARY KEY (explanatory_note_id, academic_id),
-    FOREIGN KEY (academic_id) REFERENCES academics (id),
+    reviewers_id        bigint(20) NOT NULL,
+    PRIMARY KEY (explanatory_note_id, reviewers_id),
+    FOREIGN KEY (reviewers_id) REFERENCES academics (id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id)
 );
 
