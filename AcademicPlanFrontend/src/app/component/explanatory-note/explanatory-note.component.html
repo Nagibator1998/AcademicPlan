@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="form-group row justify-content-center">
+    <div class="col-lg-10">
+      <textarea type="text" rows="10" [(ngModel)]="explanatoryNote.text" class="form-control"
+                placeholder="Пояснительная записка"></textarea>
+    </div>
+  </div>
+  <div class="form-group row justify-content-center">
+    <div class="col-lg-7">
+      <ng-autocomplete [data]="studentMustsKnow" [searchKeyword]="'text'" [itemTemplate]="itemTemplate"
+                       (selected)="setStudentMustKnow($event)" (inputChanged)="changeStudentMustKnow($event)"
+                       (inputCleared)="clearStudentMustKnow()"
+                       placeHolder="Стандарт"></ng-autocomplete>
+    </div>
+    <button class="btn btn-outline-primary" type="button" (click)="addStudentMustKnow()">Добавить</button>
+  </div>
+  <table class="table text-center">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Студент должен знать</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody class="table-light">
+    <tr *ngFor="let studentMustKnow of studentMustsKnow" class="border-dark">
+      <td>{{studentMustKnow.text}}</td>
+      <td>
+        <button type="button" (click)="deleteStudentMustKnow(studentMustKnow)">Удалить</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="row justify-content-center">
+    <button type="button" class="btn btn-outline-primary" (click)="saveExplanatoryNote()">Продолжить</button>
+  </div>
+</div>
+
+<ng-template #itemTemplate let-item>
+  <a [innerHTML]="item.text"></a>
+</ng-template>

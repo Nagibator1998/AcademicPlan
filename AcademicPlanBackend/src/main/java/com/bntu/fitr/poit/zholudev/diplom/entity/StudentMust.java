@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 @Table(name = "student_musts")
-public class StudentMustEntity {
+public class StudentMust {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,7 +14,7 @@ public class StudentMustEntity {
     @ManyToOne
     private StudentMustType studentMustType;
 
-    public StudentMustEntity() {
+    public StudentMust() {
     }
 
     public Long getId() {

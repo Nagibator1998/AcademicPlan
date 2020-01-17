@@ -12,4 +12,5 @@ export class StandardService extends BaseService<Standard> {
   constructor(private http: HttpClient) {
     super(http, '/standard');
   }
+
 }

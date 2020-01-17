@@ -43,10 +43,15 @@ CREATE TABLE IF NOT EXISTS subjects
 
 CREATE TABLE IF NOT EXISTS standards
 (
-    id   bigint(20)   NOT NULL,
+    id   bigint(20)   NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
+
+INSERT INTO standards (name)
+VALUES ('ОСВО 1-40 01 01-2013');
+INSERT INTO standards (name)
+VALUES ('ОСВО 1-40 05 01-2013');
 
 CREATE TABLE IF NOT EXISTS student_must_types
 (
@@ -54,6 +59,13 @@ CREATE TABLE IF NOT EXISTS student_must_types
     type varchar(20) NOT NULL,
     PRIMARY KEY (id)
 );
+
+INSERT INTO student_must_types (id, type)
+VALUES (1, 'KNOW');
+INSERT INTO student_must_types (id, type)
+VALUES (2, 'CAN');
+INSERT INTO student_must_types (id, type)
+VALUES (3, 'HAVE');
 
 CREATE TABLE IF NOT EXISTS independent_work_forms
 (
@@ -213,9 +225,9 @@ CREATE TABLE IF NOT EXISTS explanatory_notes
 (
     id         bigint(20)   NOT NULL,
     date       date         NOT NULL,
-    text       varchar(255) DEFAULT NULL,
+    text       text       DEFAULT NULL,
     name       varchar(100) NOT NULL,
-    subject_id bigint(20)   DEFAULT NULL,
+    subject_id bigint(20) DEFAULT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (subject_id) REFERENCES subjects (id)
 );
@@ -368,19 +380,19 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_independent_work_forms
 CREATE TABLE IF NOT EXISTS explanatory_notes_standards
 (
     explanatory_note_id bigint(20) NOT NULL,
-    standard_id         bigint(20) NOT NULL,
-    PRIMARY KEY (explanatory_note_id, standard_id),
+    standards_id        bigint(20) NOT NULL,
+    PRIMARY KEY (explanatory_note_id, standards_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),
-    FOREIGN KEY (standard_id) REFERENCES standards (id)
+    FOREIGN KEY (standards_id) REFERENCES standards (id)
 );
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_student_musts
 (
     explanatory_note_id bigint(20) NOT NULL,
-    student_must_id     bigint(20) NOT NULL,
-    PRIMARY KEY (explanatory_note_id, student_must_id),
+    student_musts_id     bigint(20) NOT NULL,
+    PRIMARY KEY (explanatory_note_id, student_musts_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),
-    FOREIGN KEY (student_must_id) REFERENCES student_musts (id)
+    FOREIGN KEY (student_musts_id) REFERENCES student_musts (id)
 );
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_reviewers

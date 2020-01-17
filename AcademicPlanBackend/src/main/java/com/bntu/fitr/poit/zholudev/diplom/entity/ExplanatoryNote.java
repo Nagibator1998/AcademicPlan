@@ -30,12 +30,12 @@ public class ExplanatoryNote {
     @ManyToMany()
     private Set<Literature> additionalLiterature;
     @ManyToMany()
-    private Set<StudentMustEntity> studentMusts;
+    private Set<StudentMust> studentMusts;
     @ManyToMany()
     private Set<Academic> reviewers;
     @ManyToMany()
     private Set<Academic> creators;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Standard> standards;
     @OneToMany(mappedBy = "explanatoryNoteId")
     private Set<ActiveSpeciality> activeSpecialities;
@@ -169,11 +169,11 @@ public class ExplanatoryNote {
         this.additionalLiterature = additionalLiterature;
     }
 
-    public Set<StudentMustEntity> getStudentMusts() {
+    public Set<StudentMust> getStudentMusts() {
         return studentMusts;
     }
 
-    public void setStudentMusts(Set<StudentMustEntity> studentMusts) {
+    public void setStudentMusts(Set<StudentMust> studentMusts) {
         this.studentMusts = studentMusts;
     }
 

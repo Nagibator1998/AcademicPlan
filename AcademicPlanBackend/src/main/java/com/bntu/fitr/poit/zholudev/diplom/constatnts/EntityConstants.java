@@ -24,8 +24,7 @@ public class EntityConstants {
     public static final String SECTION_NAME = "section";
     public static final String SPECIALITY_NAME = "speciality";
     public static final String STANDARD_NAME = "standard";
-    public static final String STUDENT_MUST_ENTITY_NAME = "studentMustEntity";
-    public static final String STUDENT_MUST_TYPE_NAME = "studentMustType";
+    public static final String STUDENT_MUST_ENTITY_NAME = "studentMust";
     public static final String SUBJECT_NAME = "subject";
     public static final String TOPIC_NAME = "topic";
     public static final String UNIVERSITY_NAME = "university";

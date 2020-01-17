@@ -16,6 +16,7 @@ import {Constants} from './const/constants';
 import { ActiveSpecialityComponent } from './component/active-speciality/active-speciality.component';
 import { AcademicComponent } from './component/academic/academic.component';
 import { StandardComponent } from './component/standard/standard.component';
+import { ExplanatoryNoteComponent } from './component/explanatory-note/explanatory-note.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: Constants.ACTIVE_SPECIALITY_ROUTE_PATH, component: ActiveSpecialityComponent},
   {path: Constants.ACADEMIC_ROUTE_PATH, component: AcademicComponent},
   {path: Constants.STANDARD_ROUTE_PATH, component: StandardComponent},
+  {path: Constants.EXPLANATORY_NOTE_ROUTE_PATH, component: ExplanatoryNoteComponent},
   {path: '*', redirectTo: '/'}
 ];
 
@@ -39,7 +41,8 @@ const routes: Routes = [
     SubjectComponent,
     ActiveSpecialityComponent,
     AcademicComponent,
-    StandardComponent
+    StandardComponent,
+    ExplanatoryNoteComponent
   ],
   exports: [RouterModule],
   imports: [

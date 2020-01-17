@@ -175,3 +175,13 @@ _
 /AcademicPlanFrontend/src/app/entity/position.ts,6\b\6bafe0d2d16268d301028ad686d3703379014257
 h
 8AcademicPlanFrontend/src/app/service/academic.service.ts,5\5\55ce659203737b92bd95666a5fe012426d48666b
+v
+FAcademicPlanFrontend/src/app/component/standard/standard.component.css,1\5\1521dfae4f5eff980fe14b1ae603f50a46ffd247
+u
+EAcademicPlanFrontend/src/app/component/standard/standard.component.ts,e\0\e039e3e6bc6562cb99781147edc1a8ba6e72c724
+_
+/AcademicPlanFrontend/src/app/entity/standard.ts,7\9\79336f628bdede0c152f4b710911495e602d37d5
+h
+8AcademicPlanFrontend/src/app/service/standard.service.ts,0\9\09522b17e6062f4ca4174e99fed20c2ed34cbd90
+w
+GAcademicPlanFrontend/src/app/component/standard/standard.component.html,6\8\68d6e68a72299eabb8046c9ce4a80e38f00a5401
