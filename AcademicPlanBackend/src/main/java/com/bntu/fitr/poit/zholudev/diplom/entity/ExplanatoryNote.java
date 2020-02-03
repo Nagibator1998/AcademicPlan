@@ -19,31 +19,31 @@ public class ExplanatoryNote {
     private Date date;
     @ManyToOne(cascade = CascadeType.ALL)
     private Subject subject;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Competence> competences;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<DiagnosticTool> diagnosticTools;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<IndependentWorkForm> independentWorkForms;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Literature> basicLiterature;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Literature> additionalLiterature;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<StudentMust> studentMusts;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Academic> reviewers;
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Academic> creators;
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Standard> standards;
     @OneToMany(mappedBy = "explanatoryNoteId")
     private Set<ActiveSpeciality> activeSpecialities;
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "explanatoryNoteId")
     private Set<ControlQuestion> controlQuestions;
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "explanatoryNoteId")
     private Set<LaboratoryWork> laboratoryWorks;
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "explanatoryNoteId")
     private Set<Section> sections;
 
     public ExplanatoryNote() {

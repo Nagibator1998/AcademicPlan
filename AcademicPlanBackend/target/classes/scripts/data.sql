@@ -220,6 +220,8 @@ CREATE TABLE IF NOT EXISTS academics
 
 INSERT INTO academics (full_name, academic_degree_id, academic_rank_id, department_id, position_id)
 VALUES ('Гурский Николай Николаевич', 1, 1, 1, 1);
+INSERT INTO academics (full_name, academic_degree_id, academic_rank_id, department_id, position_id)
+VALUES ('Куприянов Андрей Борисович', 2, 1, 2, 1);
 
 CREATE TABLE IF NOT EXISTS explanatory_notes
 (

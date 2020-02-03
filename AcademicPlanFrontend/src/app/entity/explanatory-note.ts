@@ -1,6 +1,7 @@
 import {Subject} from './subject';
 import {Academic} from './academic';
 import {Standard} from './standard';
+import {StudentMust} from './student-must';
 
 export class ExplanatoryNote {
 
@@ -12,5 +13,6 @@ export class ExplanatoryNote {
   reviewers: Academic[];
   creators: Academic[];
   standards: Standard[];
+  studentMusts: StudentMust[];
 
 }

@@ -17,6 +17,7 @@ import { ActiveSpecialityComponent } from './component/active-speciality/active-
 import { AcademicComponent } from './component/academic/academic.component';
 import { StandardComponent } from './component/standard/standard.component';
 import { ExplanatoryNoteComponent } from './component/explanatory-note/explanatory-note.component';
+import { CompetenceComponent } from './component/competence/competence.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
     ActiveSpecialityComponent,
     AcademicComponent,
     StandardComponent,
-    ExplanatoryNoteComponent
+    ExplanatoryNoteComponent,
+    CompetenceComponent
   ],
   exports: [RouterModule],
   imports: [

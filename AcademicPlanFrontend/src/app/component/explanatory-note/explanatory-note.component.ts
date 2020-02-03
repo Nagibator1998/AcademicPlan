@@ -12,8 +12,8 @@ import {StudentMustService} from '../../service/student-must.service';
 })
 export class ExplanatoryNoteComponent implements OnInit {
 
+  private text: string = '';
   private explanatoryNote: ExplanatoryNote;
-  private studentMusts: StudentMust[] = [];
   private studentMustsKnow: StudentMust[] = [];
   private addedStudentMustsKnow: StudentMust[] = [];
   private changedStudentMustKnow: StudentMust = new StudentMust();
@@ -32,7 +32,20 @@ export class ExplanatoryNoteComponent implements OnInit {
       this.explanatoryNote = data;
     });
     this.studentMustService.getAll().subscribe(data => {
-      this.studentMusts = data;
+
+      data.forEach(item => {
+          switch (item.studentMustType.id) {
+            case Constants.STUDENT_MUST_KNOW_TYPE.id:
+              this.studentMustsKnow.push(item);
+              break;
+            case Constants.STUDENT_MUST_CAN_TYPE.id:
+              this.studentMustsCan.push(item);
+              break;
+            case Constants.STUDENT_MUST_HAVE_TYPE.id:
+              this.studentMustsHave.push(item);
+          }
+        }
+      );
     });
   }
 
@@ -40,27 +53,79 @@ export class ExplanatoryNoteComponent implements OnInit {
     this.changedStudentMustKnow = StudentMust.clone(item);
   }
 
-  addStudentMustKnow(){
+  addStudentMustKnow() {
     let studentMustKnow: StudentMust = StudentMust.clone(this.changedStudentMustKnow);
     studentMustKnow.studentMustType = Constants.STUDENT_MUST_KNOW_TYPE;
-    if(studentMustKnow.text != null){
+    if (studentMustKnow.text != null) {
       this.addedStudentMustsKnow.push(studentMustKnow);
     }
   }
 
-  changeStudentMustKnow(text: string){
+  changeStudentMustKnow(text: string) {
     this.changedStudentMustKnow.text = text;
   }
 
-  clearStudentMustKnow(){
+  clearStudentMustKnow() {
     this.changedStudentMustKnow = new StudentMust();
   }
 
-  deleteStudentMustKnow(studentMustKnow: StudentMust){
+  deleteStudentMustKnow(studentMustKnow: StudentMust) {
     this.addedStudentMustsKnow.splice(this.addedStudentMustsKnow.indexOf(studentMustKnow), 1);
   }
 
+  setStudentMustCan(item: StudentMust) {
+    this.changedStudentMustCan = StudentMust.clone(item);
+  }
+
+  addStudentMustCan() {
+    let studentMustCan: StudentMust = StudentMust.clone(this.changedStudentMustCan);
+    studentMustCan.studentMustType = Constants.STUDENT_MUST_CAN_TYPE;
+    if (studentMustCan.text != null) {
+      this.addedStudentMustsCan.push(studentMustCan);
+    }
+  }
+
+  changeStudentMustCan(text: string) {
+    this.changedStudentMustCan.text = text;
+  }
+
+  clearStudentMustCan() {
+    this.changedStudentMustCan = new StudentMust();
+  }
+
+  deleteStudentMustCan(studentMustCan: StudentMust) {
+    this.addedStudentMustsCan.splice(this.addedStudentMustsCan.indexOf(studentMustCan), 1);
+  }
+
+  setStudentMustHave(item: StudentMust) {
+    this.changedStudentMustHave = StudentMust.clone(item);
+  }
+
+  addStudentMustHave() {
+    let studentMustHave: StudentMust = StudentMust.clone(this.changedStudentMustHave);
+    studentMustHave.studentMustType = Constants.STUDENT_MUST_HAVE_TYPE;
+    if (studentMustHave.text != null) {
+      this.addedStudentMustsHave.push(studentMustHave);
+    }
+  }
+
+  changeStudentMustHave(text: string) {
+    this.changedStudentMustHave.text = text;
+  }
+
+  clearStudentMustHave() {
+    this.changedStudentMustHave = new StudentMust();
+  }
+
+  deleteStudentMustHave(studentMustHave: StudentMust) {
+    this.addedStudentMustsHave.splice(this.addedStudentMustsHave.indexOf(studentMustHave), 1);
+  }
+
   saveExplanatoryNote() {
+    this.explanatoryNote.text = this.text;
+    this.explanatoryNote.studentMusts = this.explanatoryNote.studentMusts.concat(this.addedStudentMustsKnow);
+    this.explanatoryNote.studentMusts = this.explanatoryNote.studentMusts.concat(this.addedStudentMustsCan);
+    this.explanatoryNote.studentMusts = this.explanatoryNote.studentMusts.concat(this.addedStudentMustsHave);
     this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
       this.explanatoryNote = data;
     });
