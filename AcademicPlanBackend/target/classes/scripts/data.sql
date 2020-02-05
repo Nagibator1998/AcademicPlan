@@ -391,7 +391,7 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_standards
 CREATE TABLE IF NOT EXISTS explanatory_notes_student_musts
 (
     explanatory_note_id bigint(20) NOT NULL,
-    student_musts_id     bigint(20) NOT NULL,
+    student_musts_id    bigint(20) NOT NULL,
     PRIMARY KEY (explanatory_note_id, student_musts_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),
     FOREIGN KEY (student_musts_id) REFERENCES student_musts (id)

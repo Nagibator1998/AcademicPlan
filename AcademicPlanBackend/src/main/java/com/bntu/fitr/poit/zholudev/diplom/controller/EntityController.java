@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public class EntityController<T> {
+public class EntityController<T, V extends EntityService<T>> {
 
-    EntityService<T> service;
+    V service;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity save(@RequestBody T t) {

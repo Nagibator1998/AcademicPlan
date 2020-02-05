@@ -32,11 +32,6 @@ export class AcademicComponent implements OnInit {
   }
 
   setReviewer(item: Academic) {
-    for (let reviewer of this.reviewers) {
-      if (reviewer.id == item.id) {
-        return;
-      }
-    }
     this.reviewers.push(item);
     this.academics.splice(this.academics.indexOf(item), 1);
   }
@@ -47,11 +42,6 @@ export class AcademicComponent implements OnInit {
   }
 
   setCreator(item: Academic) {
-    for (let creator of this.creators) {
-      if (creator.id == item.id) {
-        return;
-      }
-    }
     this.creators.push(item);
     this.academics.splice(this.academics.indexOf(item), 1);
   }

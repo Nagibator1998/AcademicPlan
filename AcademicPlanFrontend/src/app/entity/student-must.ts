@@ -12,4 +12,5 @@ export class StudentMust {
     cloneStudentMust.studentMustType = studentMust.studentMustType;
     return cloneStudentMust;
   }
+
 }

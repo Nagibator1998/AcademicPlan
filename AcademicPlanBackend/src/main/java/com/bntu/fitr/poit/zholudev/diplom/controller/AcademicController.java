@@ -2,6 +2,7 @@ package com.bntu.fitr.poit.zholudev.diplom.controller;
 
 import com.bntu.fitr.poit.zholudev.diplom.constatnts.EntityConstants;
 import com.bntu.fitr.poit.zholudev.diplom.entity.Academic;
+import com.bntu.fitr.poit.zholudev.diplom.service.AcademicService;
 import com.bntu.fitr.poit.zholudev.diplom.service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,10 +15,11 @@ import java.util.Iterator;
 
 @RestController
 @RequestMapping(value = "/api/" + EntityConstants.ACADEMIC_NAME)
-public class AcademicController extends EntityController<Academic> {
+public class AcademicController extends EntityController<Academic, AcademicService> {
 
     @Autowired
-    public AcademicController(@Qualifier(EntityConstants.ACADEMIC_NAME) EntityService<Academic> service) {
+    public AcademicController(AcademicService service){
         this.service = service;
     }
+
 }

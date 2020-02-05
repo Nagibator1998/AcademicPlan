@@ -29,6 +29,7 @@ const routes: Routes = [
   {path: Constants.ACADEMIC_ROUTE_PATH, component: AcademicComponent},
   {path: Constants.STANDARD_ROUTE_PATH, component: StandardComponent},
   {path: Constants.EXPLANATORY_NOTE_ROUTE_PATH, component: ExplanatoryNoteComponent},
+  {path: Constants.COMPETENCE_ROUTE_PATH, component: CompetenceComponent},
   {path: '*', redirectTo: '/'}
 ];
 
