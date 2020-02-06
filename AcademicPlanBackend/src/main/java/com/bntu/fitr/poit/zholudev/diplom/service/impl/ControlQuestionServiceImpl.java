@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.CONTROL_QUESTION_NAME)
-public class ControlQuestionServiceImpl extends EntityServiceImpl<ControlQuestion> implements ControlQuestionService {
+public class ControlQuestionServiceImpl extends EntityServiceImpl<ControlQuestion, ControlQuestionRepository>
+        implements ControlQuestionService {
 
     @Autowired
-    public ControlQuestionServiceImpl(ControlQuestionRepository repository){
+    public ControlQuestionServiceImpl(ControlQuestionRepository repository) {
         this.repository = repository;
     }
 }

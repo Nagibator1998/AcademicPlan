@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.ACTIVE_SPECIALITY_NAME)
-public class ActiveSpecialityServiceImpl extends EntityServiceImpl<ActiveSpeciality> implements ActiveSpecialityService {
+public class ActiveSpecialityServiceImpl extends EntityServiceImpl<ActiveSpeciality, ActiveSpecialityRepository>
+        implements ActiveSpecialityService {
 
     @Autowired
     public ActiveSpecialityServiceImpl(ActiveSpecialityRepository repository) {

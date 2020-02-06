@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EntityServiceImpl<T> implements EntityService<T> {
+public class EntityServiceImpl<T, V extends CrudRepository<T, Long>> implements EntityService<T> {
 
-    CrudRepository<T, Long> repository;
+    V repository;
 
     @Override
     public T save(T t) {

@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.SECTION_NAME)
-public class SectionServiceImpl extends EntityServiceImpl<Section> implements SectionService {
+public class SectionServiceImpl extends EntityServiceImpl<Section, SectionRepository>
+        implements SectionService {
 
     @Autowired
     public SectionServiceImpl(SectionRepository repository) {

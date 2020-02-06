@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.LABORATORY_WORK_NAME)
-public class LaboratoryWorkServiceImpl extends EntityServiceImpl<LaboratoryWork> implements LaboratoryWorkService {
+public class LaboratoryWorkServiceImpl extends EntityServiceImpl<LaboratoryWork, LaboratoryWorkRepository>
+        implements LaboratoryWorkService {
 
     @Autowired
     public LaboratoryWorkServiceImpl(LaboratoryWorkRepository repository) {

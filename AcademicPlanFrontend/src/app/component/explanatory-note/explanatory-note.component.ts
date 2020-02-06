@@ -4,6 +4,7 @@ import {ExplanatoryNoteService} from '../../service/explanatory-note.service';
 import {Constants} from '../../const/constants';
 import {StudentMust} from '../../entity/student-must';
 import {StudentMustService} from '../../service/student-must.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-explanatory-note',
@@ -24,7 +25,8 @@ export class ExplanatoryNoteComponent implements OnInit {
   private addedStudentMustsHave: StudentMust[] = [];
   private changedStudentMustHave: StudentMust = new StudentMust();
 
-  constructor(private explanatoryNoteService: ExplanatoryNoteService, private studentMustService: StudentMustService) {
+  constructor(private explanatoryNoteService: ExplanatoryNoteService, private studentMustService: StudentMustService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -57,11 +59,17 @@ export class ExplanatoryNoteComponent implements OnInit {
     let studentMustKnow: StudentMust = StudentMust.clone(this.changedStudentMustKnow);
     studentMustKnow.studentMustType = Constants.STUDENT_MUST_KNOW_TYPE;
     if (studentMustKnow.text != null) {
+      for (let addedStudentMustKnow of this.addedStudentMustsKnow) {
+        if (addedStudentMustKnow.id != null && studentMustKnow.id != null && addedStudentMustKnow.id == studentMustKnow.id) {
+          return;
+        }
+      }
       this.addedStudentMustsKnow.push(studentMustKnow);
     }
   }
 
   changeStudentMustKnow(text: string) {
+    this.changedStudentMustKnow.id = null;
     this.changedStudentMustKnow.text = text;
   }
 
@@ -81,11 +89,17 @@ export class ExplanatoryNoteComponent implements OnInit {
     let studentMustCan: StudentMust = StudentMust.clone(this.changedStudentMustCan);
     studentMustCan.studentMustType = Constants.STUDENT_MUST_CAN_TYPE;
     if (studentMustCan.text != null) {
+      for (let addedStudentMustCan of this.addedStudentMustsCan) {
+        if (addedStudentMustCan.id != null && studentMustCan.id != null && addedStudentMustCan.id == studentMustCan.id) {
+          return;
+        }
+      }
       this.addedStudentMustsCan.push(studentMustCan);
     }
   }
 
   changeStudentMustCan(text: string) {
+    this.changedStudentMustCan.id = null;
     this.changedStudentMustCan.text = text;
   }
 
@@ -105,11 +119,17 @@ export class ExplanatoryNoteComponent implements OnInit {
     let studentMustHave: StudentMust = StudentMust.clone(this.changedStudentMustHave);
     studentMustHave.studentMustType = Constants.STUDENT_MUST_HAVE_TYPE;
     if (studentMustHave.text != null) {
+      for (let addedStudentMustHave of this.addedStudentMustsCan) {
+        if (addedStudentMustHave.id != null && studentMustHave.id != null && addedStudentMustHave.id == studentMustHave.id) {
+          return;
+        }
+      }
       this.addedStudentMustsHave.push(studentMustHave);
     }
   }
 
   changeStudentMustHave(text: string) {
+    this.changedStudentMustHave.id = null;
     this.changedStudentMustHave.text = text;
   }
 
@@ -128,6 +148,7 @@ export class ExplanatoryNoteComponent implements OnInit {
     this.explanatoryNote.studentMusts = this.explanatoryNote.studentMusts.concat(this.addedStudentMustsHave);
     this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
       this.explanatoryNote = data;
+      this.router.navigate([Constants.COMPETENCE_ROUTE_PATH]);
     });
   }
 

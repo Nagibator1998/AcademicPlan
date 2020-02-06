@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.ACADEMIC_NAME)
-public class AcademicServiceImpl extends EntityServiceImpl<Academic> implements AcademicService {
+public class AcademicServiceImpl extends EntityServiceImpl<Academic, AcademicRepository> implements AcademicService {
 
     @Autowired
     public AcademicServiceImpl (AcademicRepository repository) {

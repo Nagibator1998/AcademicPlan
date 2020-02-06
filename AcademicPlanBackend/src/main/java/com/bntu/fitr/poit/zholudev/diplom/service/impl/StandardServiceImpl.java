@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.STANDARD_NAME)
-public class StandardServiceImpl extends EntityServiceImpl<Standard> implements StandardService {
+public class StandardServiceImpl extends EntityServiceImpl<Standard, StandardRepository>
+        implements StandardService {
 
     @Autowired
     public StandardServiceImpl(StandardRepository repository) {

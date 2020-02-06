@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 export class StandardComponent implements OnInit {
 
   private standards: Standard[] = [];
-  private usedStandards: Standard[] = [];
+  private addedStandards: Standard[] = [];
   private changedStandard: Standard = new Standard();
   private explanatoryNote: ExplanatoryNote;
 
@@ -31,34 +31,40 @@ export class StandardComponent implements OnInit {
     });
   }
 
-  setChangedStandard(item: Standard){
+  setChangedStandard(item: Standard) {
     this.changedStandard = Standard.clone(item);
   }
 
-  addStandard(){
+  addStandard() {
     let standard: Standard = Standard.clone(this.changedStandard);
-    if(standard.name != null) {
-      this.usedStandards.push(standard);
+    if (standard.name != null) {
+      for (let addedStandard of this.addedStandards) {
+        if (addedStandard.id != null && standard.id != null && addedStandard.id == standard.id) {
+          return;
+        }
+      }
+      this.addedStandards.push(standard);
     }
   }
 
-  deleteStandard(standard: Standard){
-    this.usedStandards.splice(this.usedStandards.indexOf(standard), 1);
+  deleteStandard(standard: Standard) {
+    this.addedStandards.splice(this.addedStandards.indexOf(standard), 1);
   }
 
-  saveStandards(){
-    this.explanatoryNote.standards = this.usedStandards;
-    this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data=>{
+  saveStandards() {
+    this.explanatoryNote.standards = this.addedStandards;
+    this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
       this.explanatoryNote = data;
       this.router.navigate([Constants.EXPLANATORY_NOTE_ROUTE_PATH]);
-    })
+    });
   }
 
-  changeStandard(name: string){
+  changeStandard(name: string) {
+    this.changedStandard.id = null;
     this.changedStandard.name = name;
   }
 
-  clearStandard(){
+  clearStandard() {
     this.changedStandard = new Standard();
   }
 

@@ -97,10 +97,27 @@ CREATE TABLE IF NOT EXISTS course_project_tasks
 
 CREATE TABLE IF NOT EXISTS competence_codes
 (
-    id   bigint(20)  NOT NULL,
+    id   bigint(20)  NOT NULL AUTO_INCREMENT,
     code varchar(20) NOT NULL,
     PRIMARY KEY (id)
 );
+
+INSERT INTO competence_codes (id, code)
+VALUES (1, 'АК-1');
+INSERT INTO competence_codes (id, code)
+VALUES (2, 'АК-2');
+INSERT INTO competence_codes (id, code)
+VALUES (3, 'АК-3');
+INSERT INTO competence_codes (id, code)
+VALUES (4, 'АК-4');
+INSERT INTO competence_codes (id, code)
+VALUES (5, 'АК-5');
+INSERT INTO competence_codes (id, code)
+VALUES (6, 'ПК-1');
+INSERT INTO competence_codes (id, code)
+VALUES (7, 'ПК-21');
+INSERT INTO competence_codes (id, code)
+VALUES (8, 'ПК-23');
 
 CREATE TABLE IF NOT EXISTS course_projects
 (
@@ -124,12 +141,27 @@ CREATE TABLE IF NOT EXISTS course_project_topics
 
 CREATE TABLE IF NOT EXISTS student_musts
 (
-    id                   bigint(20)   NOT NULL,
+    id                   bigint(20)   NOT NULL AUTO_INCREMENT,
     text                 varchar(255) NOT NULL,
     student_must_type_id bigint(20)   NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (student_must_type_id) REFERENCES student_must_types (id)
 );
+
+INSERT INTO student_musts (text, student_must_type_id)
+VALUES ('особенности разработки программ в визуальных средах', 1);
+INSERT INTO student_musts (text, student_must_type_id)
+VALUES ('основные принципы объектно-ориентированного программирования', 1);
+INSERT INTO student_musts (text, student_must_type_id)
+VALUES ('разрабатывать программные продукты с помощью визуальных сред программирования', 2);
+INSERT INTO student_musts (text, student_must_type_id)
+VALUES ('организовать обработку информации с использованием современных технологий в программировании', 2);
+INSERT INTO student_musts (text, student_must_type_id)
+VALUES ('навыками проектирования и разработки программ, управляемых различными интерфейсными элементами', 3);
+INSERT INTO student_musts (text, student_must_type_id)
+VALUES ('технологиями, поддерживающими разработку программ с использованием динамических библиотек, многопоточности, клиент-серверного взаимодействия',
+        3);
+
 
 CREATE TABLE IF NOT EXISTS universities
 (
@@ -325,7 +357,7 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_creators
 
 CREATE TABLE IF NOT EXISTS competences
 (
-    id                 bigint(20)   NOT NULL,
+    id                 bigint(20)   NOT NULL AUTO_INCREMENT,
     speciality_id      bigint(20) DEFAULT NULL,
     text               varchar(255) NOT NULL,
     competence_code_id bigint(20)   NOT NULL,
@@ -333,6 +365,23 @@ CREATE TABLE IF NOT EXISTS competences
     FOREIGN KEY (speciality_id) REFERENCES specialities (id),
     FOREIGN KEY (competence_code_id) REFERENCES competence_codes (id)
 );
+
+INSERT INTO competences (speciality_id, text, competence_code_id)
+VALUES (1, 'Владеть современными технологиями проектирования сложных систем и про-граммных средств.', 6);
+INSERT INTO competences (speciality_id, text, competence_code_id)
+VALUES (2,
+        'Владеть современными методами, языками, технологиями и инструментальны-ми средствами проектирования и разработки программных продуктов.',
+        6);
+INSERT INTO competences (speciality_id, text, competence_code_id)
+VALUES (1, 'Анализировать и оценивать собранные данные.', 8);
+INSERT INTO competences (speciality_id, text, competence_code_id)
+VALUES (NULL, 'Уметь применять базовые научно-теоретические знания для решения теоретиче-ских и практических задач.',
+        1);
+INSERT INTO competences (speciality_id, text, competence_code_id)
+VALUES (NULL, 'Владеть системным и сравнительным анализом.', 2);
+INSERT INTO competences (speciality_id, text, competence_code_id)
+VALUES (NULL, 'Владеть исследовательскими навыками.', 3);
+
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_additional_literature
 (
@@ -355,9 +404,9 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_basic_literature
 CREATE TABLE IF NOT EXISTS explanatory_notes_competences
 (
     explanatory_note_id bigint(20) NOT NULL,
-    competence_id       bigint(20) NOT NULL,
-    PRIMARY KEY (explanatory_note_id, competence_id),
-    FOREIGN KEY (competence_id) REFERENCES competences (id),
+    competences_id       bigint(20) NOT NULL,
+    PRIMARY KEY (explanatory_note_id, competences_id),
+    FOREIGN KEY (competences_id) REFERENCES competences (id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id)
 );
 

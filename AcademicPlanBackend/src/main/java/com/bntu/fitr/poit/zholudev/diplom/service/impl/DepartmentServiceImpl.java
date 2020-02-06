@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.DEPARTMENT_NAME)
-public class DepartmentServiceImpl extends EntityServiceImpl<Department> implements DepartmentService {
+public class DepartmentServiceImpl extends EntityServiceImpl<Department, DepartmentRepository>
+        implements DepartmentService {
 
     @Autowired
     public DepartmentServiceImpl(DepartmentRepository repository) {

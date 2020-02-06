@@ -11,6 +11,7 @@ export class Constants {
   public static STANDARD_ROUTE_PATH = 'standard';
   public static EXPLANATORY_NOTE_ROUTE_PATH = 'explanatoryNote';
   public static COMPETENCE_ROUTE_PATH = 'competence';
+  public static SECTION_ROUTE_PATH = 'section';
 
   public static STUDENT_MUST_KNOW_TYPE: StudentMustType = {'id': 1, 'type': 'KNOW'};
   public static STUDENT_MUST_CAN_TYPE: StudentMustType = {'id': 2, 'type': 'CAN'};

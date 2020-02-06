@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.SUBJECT_NAME)
-public class SubjectServiceImpl extends EntityServiceImpl<Subject> implements SubjectService {
+public class SubjectServiceImpl extends EntityServiceImpl<Subject, SubjectRepository> implements SubjectService {
 
     @Autowired
     public SubjectServiceImpl(SubjectRepository repository) {

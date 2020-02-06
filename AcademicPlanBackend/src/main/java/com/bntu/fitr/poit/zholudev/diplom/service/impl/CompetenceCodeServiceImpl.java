@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.COMPETENCE_CODE_NAME)
-public class CompetenceCodeServiceImpl extends EntityServiceImpl<CompetenceCode> implements CompetenceCodeService {
+public class CompetenceCodeServiceImpl extends EntityServiceImpl<CompetenceCode, CompetenceCodeRepository>
+        implements CompetenceCodeService {
 
     @Autowired
-    public CompetenceCodeServiceImpl(CompetenceCodeRepository repository){
+    public CompetenceCodeServiceImpl(CompetenceCodeRepository repository) {
         this.repository = repository;
     }
 }

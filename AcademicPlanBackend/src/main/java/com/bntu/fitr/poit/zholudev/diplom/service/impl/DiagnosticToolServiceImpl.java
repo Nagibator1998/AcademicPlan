@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.DIAGNOSTIC_TOOL_NAME)
-public class DiagnosticToolServiceImpl extends EntityServiceImpl<DiagnosticTool> implements DiagnosticToolService {
+public class DiagnosticToolServiceImpl extends EntityServiceImpl<DiagnosticTool, DiagnosticToolRepository>
+        implements DiagnosticToolService {
 
     @Autowired
     public DiagnosticToolServiceImpl(DiagnosticToolRepository repository) {

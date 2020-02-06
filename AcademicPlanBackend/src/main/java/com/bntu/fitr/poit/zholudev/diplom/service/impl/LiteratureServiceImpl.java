@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.LITERATURE_NAME)
-public class LiteratureServiceImpl extends EntityServiceImpl<Literature> implements LiteratureService {
+public class LiteratureServiceImpl extends EntityServiceImpl<Literature, LiteratureRepository>
+        implements LiteratureService {
 
     @Autowired
     public LiteratureServiceImpl(LiteratureRepository repository) {

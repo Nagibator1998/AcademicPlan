@@ -10,15 +10,16 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 @Service(EntityConstants.COMPETENCE_NAME)
-public class CompetenceServiceImpl extends EntityServiceImpl<Competence> implements CompetenceService {
+public class CompetenceServiceImpl extends EntityServiceImpl<Competence, CompetenceRepository>
+        implements CompetenceService {
 
     @Autowired
-    public CompetenceServiceImpl(CompetenceRepository repository){
+    public CompetenceServiceImpl(CompetenceRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public Collection<Competence> getCompetencesForExplanatoryNote(Long explanatoryNoteId) {
-        return ((CompetenceService) this.repository).getCompetencesForExplanatoryNote(explanatoryNoteId);
+        return this.repository.getCompetencesForExplanatoryNote(explanatoryNoteId);
     }
 }

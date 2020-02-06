@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.COURSE_PROJECT_TASK_NAME)
-public class CourseProjectTaskServiceImpl extends EntityServiceImpl<CourseProjectTask> implements CourseProjectTaskService {
+public class CourseProjectTaskServiceImpl extends EntityServiceImpl<CourseProjectTask, CourseProjectTaskRepository>
+        implements CourseProjectTaskService {
 
     @Autowired
     public CourseProjectTaskServiceImpl(CourseProjectTaskRepository repository) {

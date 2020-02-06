@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.ACTIVE_TOPIC_NAME)
-public class ActiveTopicServiceImpl extends EntityServiceImpl<ActiveTopic> implements ActiveTopicService {
+public class ActiveTopicServiceImpl extends EntityServiceImpl<ActiveTopic, ActiveTopicRepository>
+        implements ActiveTopicService {
 
     @Autowired
-    public ActiveTopicServiceImpl(ActiveTopicRepository repository){
+    public ActiveTopicServiceImpl(ActiveTopicRepository repository) {
         this.repository = repository;
     }
 }

@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.EXPLANATORY_NOTE_NAME)
-public class ExplanatoryNoteServiceImpl extends EntityServiceImpl<ExplanatoryNote> implements ExplanatoryNoteService {
+public class ExplanatoryNoteServiceImpl extends EntityServiceImpl<ExplanatoryNote, ExplanatoryNoteRepository>
+        implements ExplanatoryNoteService {
 
     @Autowired
     public ExplanatoryNoteServiceImpl(ExplanatoryNoteRepository repository) {

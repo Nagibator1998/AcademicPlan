@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.ACADEMIC_RANK_NAME)
-public class AcademicRankServiceImpl extends EntityServiceImpl<AcademicRank> implements AcademicRankService {
+public class AcademicRankServiceImpl extends EntityServiceImpl<AcademicRank, AcademicRankRepository>
+        implements AcademicRankService {
 
     @Autowired
-    public AcademicRankServiceImpl (AcademicRankRepository repository) {
+    public AcademicRankServiceImpl(AcademicRankRepository repository) {
         this.repository = repository;
     }
 }

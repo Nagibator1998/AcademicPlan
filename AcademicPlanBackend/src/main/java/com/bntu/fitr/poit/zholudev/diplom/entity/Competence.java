@@ -11,9 +11,10 @@ public class Competence {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String text;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private CompetenceCode competenceCode;
-    private Long specialityId;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Speciality speciality;
 
     public Competence() {
     }
@@ -42,11 +43,11 @@ public class Competence {
         this.competenceCode = competenceCode;
     }
 
-    public Long getSpecialityId() {
-        return specialityId;
+    public Speciality getSpeciality() {
+        return speciality;
     }
 
-    public void setSpecialityId(Long specialityId) {
-        this.specialityId = specialityId;
+    public void setSpeciality(Speciality speciality) {
+        this.speciality = speciality;
     }
 }

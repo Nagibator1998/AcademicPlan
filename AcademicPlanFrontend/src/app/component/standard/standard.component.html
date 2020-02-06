@@ -16,7 +16,7 @@
     </tr>
     </thead>
     <tbody class="table-light">
-    <tr *ngFor="let standard of usedStandards" class="border-dark">
+    <tr *ngFor="let standard of addedStandards" class="border-dark">
       <td>{{standard.name}}</td>
       <td>
         <button type="button" (click)="deleteStandard(standard)">Удалить</button>

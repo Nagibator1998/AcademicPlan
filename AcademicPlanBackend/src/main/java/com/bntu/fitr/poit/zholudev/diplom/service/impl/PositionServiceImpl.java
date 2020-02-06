@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(EntityConstants.POSITION_NAME)
-public class PositionServiceImpl extends EntityServiceImpl<Position> implements PositionService {
+public class PositionServiceImpl extends EntityServiceImpl<Position, PositionRepository>
+        implements PositionService {
 
     @Autowired
     public PositionServiceImpl(PositionRepository repository) {
