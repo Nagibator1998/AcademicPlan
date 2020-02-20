@@ -4,4 +4,9 @@ export class Topic {
   text: string;
   topicNumber: number;
   sectionId: number;
+
+  constructor(){
+    this.name = '';
+    this.text = '';
+  }
 }

@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 public class ActiveTopic {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long activeSpecialityId;
     @ManyToOne

@@ -4,6 +4,7 @@ package com.bntu.fitr.poit.zholudev.diplom.entity;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,7 +13,7 @@ import java.util.Set;
 public class ExplanatoryNote {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String text;
@@ -20,74 +21,35 @@ public class ExplanatoryNote {
     @ManyToOne(cascade = CascadeType.ALL)
     private Subject subject;
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Competence> competences;
+    private List<Competence> competences;
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<DiagnosticTool> diagnosticTools;
+    private List<DiagnosticTool> diagnosticTools;
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<IndependentWorkForm> independentWorkForms;
+    private List<IndependentWorkForm> independentWorkForms;
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Literature> basicLiterature;
+    private List<Literature> basicLiterature;
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Literature> additionalLiterature;
+    private List<Literature> additionalLiterature;
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<StudentMust> studentMusts;
+    private List<StudentMust> studentMusts;
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Academic> reviewers;
+    private List<Academic> reviewers;
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Academic> creators;
+    private List<Academic> creators;
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Standard> standards;
+    private List<Standard> standards;
     @OneToMany(mappedBy = "explanatoryNoteId")
-    private Set<ActiveSpeciality> activeSpecialities;
+    private List<ActiveSpeciality> activeSpecialities;
     @OneToMany(mappedBy = "explanatoryNoteId")
-    private Set<ControlQuestion> controlQuestions;
+    private List<ControlQuestion> controlQuestions;
     @OneToMany(mappedBy = "explanatoryNoteId")
-    private Set<LaboratoryWork> laboratoryWorks;
+    private List<LaboratoryWork> laboratoryWorks;
     @OneToMany(mappedBy = "explanatoryNoteId")
-    private Set<Section> sections;
+    private List<Section> sections;
 
     public ExplanatoryNote() {
     }
 
-    public Set<Academic> getCreators() {
-        return creators;
-    }
-
-    public void setCreators(Set<Academic> creators) {
-        this.creators = creators;
-    }
-
-    public Set<Section> getSections() {
-        return sections;
-    }
-
-    public void setSections(Set<Section> sections) {
-        this.sections = sections;
-    }
-
-    public Set<Academic> getReviewers() {
-        return reviewers;
-    }
-
-    public void setReviewers(Set<Academic> reviewers) {
-        this.reviewers = reviewers;
-    }
-
-    public Set<ControlQuestion> getControlQuestions() {
-        return controlQuestions;
-    }
-
-    public void setControlQuestions(Set<ControlQuestion> controlQuestions) {
-        this.controlQuestions = controlQuestions;
-    }
-
-    public Set<LaboratoryWork> getLaboratoryWorks() {
-        return laboratoryWorks;
-    }
-
-    public void setLaboratoryWorks(Set<LaboratoryWork> laboratoryWorks) {
-        this.laboratoryWorks = laboratoryWorks;
-    }
 
     public Long getId() {
         return id;
@@ -121,14 +83,6 @@ public class ExplanatoryNote {
         this.subject = subject;
     }
 
-    public Set<Competence> getCompetences() {
-        return competences;
-    }
-
-    public void setCompetences(Set<Competence> competences) {
-        this.competences = competences;
-    }
-
     public String getName() {
         return name;
     }
@@ -137,59 +91,107 @@ public class ExplanatoryNote {
         this.name = name;
     }
 
-    public Set<DiagnosticTool> getDiagnosticTools() {
+    public List<Competence> getCompetences() {
+        return competences;
+    }
+
+    public void setCompetences(List<Competence> competences) {
+        this.competences = competences;
+    }
+
+    public List<DiagnosticTool> getDiagnosticTools() {
         return diagnosticTools;
     }
 
-    public void setDiagnosticTools(Set<DiagnosticTool> diagnosticTools) {
+    public void setDiagnosticTools(List<DiagnosticTool> diagnosticTools) {
         this.diagnosticTools = diagnosticTools;
     }
 
-    public Set<IndependentWorkForm> getIndependentWorkForms() {
+    public List<IndependentWorkForm> getIndependentWorkForms() {
         return independentWorkForms;
     }
 
-    public void setIndependentWorkForms(Set<IndependentWorkForm> independentWorkForms) {
+    public void setIndependentWorkForms(List<IndependentWorkForm> independentWorkForms) {
         this.independentWorkForms = independentWorkForms;
     }
 
-    public Set<Literature> getBasicLiterature() {
+    public List<Literature> getBasicLiterature() {
         return basicLiterature;
     }
 
-    public void setBasicLiterature(Set<Literature> basicLiterature) {
+    public void setBasicLiterature(List<Literature> basicLiterature) {
         this.basicLiterature = basicLiterature;
     }
 
-    public Set<Literature> getAdditionalLiterature() {
+    public List<Literature> getAdditionalLiterature() {
         return additionalLiterature;
     }
 
-    public void setAdditionalLiterature(Set<Literature> additionalLiterature) {
+    public void setAdditionalLiterature(List<Literature> additionalLiterature) {
         this.additionalLiterature = additionalLiterature;
     }
 
-    public Set<StudentMust> getStudentMusts() {
+    public List<StudentMust> getStudentMusts() {
         return studentMusts;
     }
 
-    public void setStudentMusts(Set<StudentMust> studentMusts) {
+    public void setStudentMusts(List<StudentMust> studentMusts) {
         this.studentMusts = studentMusts;
     }
 
-    public Set<Standard> getStandards() {
+    public List<Academic> getReviewers() {
+        return reviewers;
+    }
+
+    public void setReviewers(List<Academic> reviewers) {
+        this.reviewers = reviewers;
+    }
+
+    public List<Academic> getCreators() {
+        return creators;
+    }
+
+    public void setCreators(List<Academic> creators) {
+        this.creators = creators;
+    }
+
+    public List<Standard> getStandards() {
         return standards;
     }
 
-    public void setStandards(Set<Standard> standards) {
+    public void setStandards(List<Standard> standards) {
         this.standards = standards;
     }
 
-    public Set<ActiveSpeciality> getActiveSpecialities() {
+    public List<ActiveSpeciality> getActiveSpecialities() {
         return activeSpecialities;
     }
 
-    public void setActiveSpecialities(Set<ActiveSpeciality> activeSpecialities) {
+    public void setActiveSpecialities(List<ActiveSpeciality> activeSpecialities) {
         this.activeSpecialities = activeSpecialities;
+    }
+
+    public List<ControlQuestion> getControlQuestions() {
+        return controlQuestions;
+    }
+
+    public void setControlQuestions(List<ControlQuestion> controlQuestions) {
+        this.controlQuestions = controlQuestions;
+    }
+
+    public List<LaboratoryWork> getLaboratoryWorks() {
+        return laboratoryWorks;
+    }
+
+    public void setLaboratoryWorks(List<LaboratoryWork> laboratoryWorks) {
+        this.laboratoryWorks = laboratoryWorks;
+    }
+
+    public List<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
     }
 }

@@ -1,14 +1,15 @@
 import {Speciality} from './speciality';
 import {CourseProject} from './course-project';
+import {ActiveTopic} from './active-topic';
 
 export class ActiveSpeciality {
 
   id: number;
   explanatoryNoteId: number;
   speciality: Speciality;
-  course: number;
   semester: number;
   exam: boolean = false;
-  courseProject: CourseProject
+  courseProject: CourseProject;
+  activeTopics: ActiveTopic[];
 
 }

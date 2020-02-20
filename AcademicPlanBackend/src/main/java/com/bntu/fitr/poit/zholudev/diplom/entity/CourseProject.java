@@ -2,6 +2,7 @@ package com.bntu.fitr.poit.zholudev.diplom.entity;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,15 +10,15 @@ import java.util.Set;
 public class CourseProject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String goal;
     private Long countOfPages;
     private Long countOfHours;
     @OneToMany(mappedBy = "id")
-    private Set<CourseProjectTask> courseProjectTasks;
+    private List<CourseProjectTask> courseProjectTasks;
     @OneToMany(mappedBy = "id")
-    private Set<CourseProjectTopic> courseProjectTopics;
+    private List<CourseProjectTopic> courseProjectTopics;
 
 
     public CourseProject() {
@@ -55,19 +56,19 @@ public class CourseProject {
         this.countOfHours = countOfHours;
     }
 
-    public Set<CourseProjectTask> getCourseProjectTasks() {
+    public List<CourseProjectTask> getCourseProjectTasks() {
         return courseProjectTasks;
     }
 
-    public void setCourseProjectTasks(Set<CourseProjectTask> courseProjectTasks) {
+    public void setCourseProjectTasks(List<CourseProjectTask> courseProjectTasks) {
         this.courseProjectTasks = courseProjectTasks;
     }
 
-    public Set<CourseProjectTopic> getCourseProjectTopics() {
+    public List<CourseProjectTopic> getCourseProjectTopics() {
         return courseProjectTopics;
     }
 
-    public void setCourseProjectTopics(Set<CourseProjectTopic> courseProjectTopics) {
+    public void setCourseProjectTopics(List<CourseProjectTopic> courseProjectTopics) {
         this.courseProjectTopics = courseProjectTopics;
     }
 }

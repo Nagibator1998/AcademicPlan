@@ -5,6 +5,7 @@ import com.bntu.fitr.poit.zholudev.diplom.service.EntityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EntityController<T, V extends EntityService<T>> {
@@ -42,8 +43,17 @@ public class EntityController<T, V extends EntityService<T>> {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.POST)
-    public ResponseEntity saveAll(@RequestBody List<T> t) {
-        Iterable allT = this.service.saveAll(t);
+    public ResponseEntity saveAll(@RequestBody List<T> ts) {
+        Iterable allT = this.service.saveAll(ts);
         return ResponseEntity.ok(allT);
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.PUT)
+    public ResponseEntity updateAll(@RequestBody List<T> ts) {
+        List<T> result = new ArrayList<>();
+        for (T t : ts) {
+            result.add(this.service.update(t));
+        }
+        return ResponseEntity.ok(result);
     }
 }

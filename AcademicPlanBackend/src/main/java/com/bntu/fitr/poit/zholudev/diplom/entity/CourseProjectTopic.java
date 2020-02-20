@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 public class CourseProjectTopic {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long topicNumber;
     private String text;

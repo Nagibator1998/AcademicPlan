@@ -2,6 +2,7 @@ package com.bntu.fitr.poit.zholudev.diplom.entity;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,13 +10,13 @@ import java.util.Set;
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String abbreviation;
     private Long facultyId;
     @OneToMany(mappedBy = "departmentId")
-    private Set<Speciality> specialities;
+    private List<Speciality> specialities;
 
     public Department() {
     }
@@ -52,11 +53,11 @@ public class Department {
         this.facultyId = facultyId;
     }
 
-    public Set<Speciality> getSpecialities() {
+    public List<Speciality> getSpecialities() {
         return specialities;
     }
 
-    public void setSpecialities(Set<Speciality> specialities) {
+    public void setSpecialities(List<Speciality> specialities) {
         this.specialities = specialities;
     }
 }

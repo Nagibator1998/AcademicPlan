@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 public class LaboratoryWork {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
     private Long workNumber;

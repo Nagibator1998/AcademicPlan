@@ -2,6 +2,7 @@ package com.bntu.fitr.poit.zholudev.diplom.entity;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,13 +10,13 @@ import java.util.Set;
 public class Section {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Long sectionNumber;
     private Long explanatoryNoteId;
-    @OneToMany
-    private Set<Topic> topics;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Topic> topics;
 
     public Section() {
     }
@@ -52,11 +53,11 @@ public class Section {
         this.explanatoryNoteId = explanatoryNoteId;
     }
 
-    public Set<Topic> getTopics() {
+    public List<Topic> getTopics() {
         return topics;
     }
 
-    public void setTopics(Set<Topic> topics) {
+    public void setTopics(List<Topic> topics) {
         this.topics = topics;
     }
 }

@@ -36,7 +36,7 @@ VALUES ('Доцент кафедры');
 
 CREATE TABLE IF NOT EXISTS subjects
 (
-    id   bigint(20)   NOT NULL,
+    id   bigint(20)   NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -55,7 +55,7 @@ VALUES ('ОСВО 1-40 05 01-2013');
 
 CREATE TABLE IF NOT EXISTS student_must_types
 (
-    id   bigint(20)  NOT NULL,
+    id   bigint(20)  NOT NULL AUTO_INCREMENT,
     type varchar(20) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -69,28 +69,28 @@ VALUES (3, 'HAVE');
 
 CREATE TABLE IF NOT EXISTS independent_work_forms
 (
-    id   bigint(20)   NOT NULL,
+    id   bigint(20)   NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS literature
 (
-    id   bigint(20)   NOT NULL,
+    id   bigint(20)   NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS diagnostic_tools
 (
-    id   bigint(20)   NOT NULL,
+    id   bigint(20)   NOT NULL AUTO_INCREMENT,
     text varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS course_project_tasks
 (
-    id   bigint(20)   NOT NULL,
+    id   bigint(20)   NOT NULL AUTO_INCREMENT,
     text varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -121,7 +121,7 @@ VALUES (8, 'ПК-23');
 
 CREATE TABLE IF NOT EXISTS course_projects
 (
-    id             bigint(20) NOT NULL,
+    id             bigint(20) NOT NULL AUTO_INCREMENT,
     count_of_hours bigint(20)   DEFAULT NULL,
     count_of_pages bigint(20)   DEFAULT NULL,
     goal           varchar(255) DEFAULT NULL,
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS course_projects
 
 CREATE TABLE IF NOT EXISTS course_project_topics
 (
-    id                bigint(20)   NOT NULL,
+    id                bigint(20)   NOT NULL AUTO_INCREMENT,
     course_project_id bigint(20)   NOT NULL,
     text              varchar(255) NOT NULL,
     topic_number      bigint(20)   NOT NULL,
@@ -161,7 +161,6 @@ VALUES ('навыками проектирования и разработки �
 INSERT INTO student_musts (text, student_must_type_id)
 VALUES ('технологиями, поддерживающими разработку программ с использованием динамических библиотек, многопоточности, клиент-серверного взаимодействия',
         3);
-
 
 CREATE TABLE IF NOT EXISTS universities
 (
@@ -257,7 +256,7 @@ VALUES ('Куприянов Андрей Борисович', 2, 1, 2, 1);
 
 CREATE TABLE IF NOT EXISTS explanatory_notes
 (
-    id         bigint(20)   NOT NULL,
+    id         bigint(20)   NOT NULL AUTO_INCREMENT,
     date       date         NOT NULL,
     text       text       DEFAULT NULL,
     name       varchar(100) NOT NULL,
@@ -268,8 +267,7 @@ CREATE TABLE IF NOT EXISTS explanatory_notes
 
 CREATE TABLE IF NOT EXISTS active_specialities
 (
-    id                  bigint(20) NOT NULL,
-    course              bigint(20) NOT NULL,
+    id                  bigint(20) NOT NULL AUTO_INCREMENT,
     exam                bit(1)     NOT NULL,
     explanatory_note_id bigint(20) NOT NULL,
     semester            bigint(20) NOT NULL,
@@ -283,7 +281,7 @@ CREATE TABLE IF NOT EXISTS active_specialities
 
 CREATE TABLE IF NOT EXISTS sections
 (
-    id                  bigint(20)   NOT NULL,
+    id                  bigint(20)   NOT NULL AUTO_INCREMENT,
     explanatory_note_id bigint(20)   NOT NULL,
     name                varchar(255) NOT NULL,
     section_number      bigint(20)   NOT NULL,
@@ -293,7 +291,7 @@ CREATE TABLE IF NOT EXISTS sections
 
 CREATE TABLE IF NOT EXISTS topics
 (
-    id           bigint(20)   NOT NULL,
+    id           bigint(20)   NOT NULL AUTO_INCREMENT,
     name         varchar(255) NOT NULL,
     section_id   bigint(20)   NOT NULL,
     text         varchar(255) NOT NULL,
@@ -304,7 +302,7 @@ CREATE TABLE IF NOT EXISTS topics
 
 CREATE TABLE IF NOT EXISTS laboratory_works
 (
-    id                  bigint(20)   NOT NULL,
+    id                  bigint(20)   NOT NULL AUTO_INCREMENT,
     explanatory_note_id bigint(20)   NOT NULL,
     text                varchar(255) NOT NULL,
     work_number         bigint(20)   NOT NULL,
@@ -314,7 +312,7 @@ CREATE TABLE IF NOT EXISTS laboratory_works
 
 CREATE TABLE IF NOT EXISTS active_topics
 (
-    id                    bigint(20) NOT NULL,
+    id                    bigint(20) NOT NULL AUTO_INCREMENT,
     active_speciality_id  bigint(20) NOT NULL,
     defense               bit(1)     DEFAULT NULL,
     laboratory_work_hours bigint(20) DEFAULT NULL,
@@ -329,7 +327,7 @@ CREATE TABLE IF NOT EXISTS active_topics
 
 CREATE TABLE IF NOT EXISTS control_questions
 (
-    id                  bigint(20)   NOT NULL,
+    id                  bigint(20)   NOT NULL AUTO_INCREMENT,
     explanatory_note_id bigint(20)   NOT NULL,
     question_number     bigint(20)   NOT NULL,
     text                varchar(255) NOT NULL,
@@ -404,7 +402,7 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_basic_literature
 CREATE TABLE IF NOT EXISTS explanatory_notes_competences
 (
     explanatory_note_id bigint(20) NOT NULL,
-    competences_id       bigint(20) NOT NULL,
+    competences_id      bigint(20) NOT NULL,
     PRIMARY KEY (explanatory_note_id, competences_id),
     FOREIGN KEY (competences_id) REFERENCES competences (id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id)

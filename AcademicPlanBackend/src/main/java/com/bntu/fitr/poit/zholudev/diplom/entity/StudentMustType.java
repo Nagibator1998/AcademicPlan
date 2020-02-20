@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 public class StudentMustType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String type;
 

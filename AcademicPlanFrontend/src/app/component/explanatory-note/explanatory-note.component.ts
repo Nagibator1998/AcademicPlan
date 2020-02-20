@@ -143,9 +143,9 @@ export class ExplanatoryNoteComponent implements OnInit {
 
   saveExplanatoryNote() {
     this.explanatoryNote.text = this.text;
-    this.explanatoryNote.studentMusts = this.explanatoryNote.studentMusts.concat(this.addedStudentMustsKnow);
-    this.explanatoryNote.studentMusts = this.explanatoryNote.studentMusts.concat(this.addedStudentMustsCan);
-    this.explanatoryNote.studentMusts = this.explanatoryNote.studentMusts.concat(this.addedStudentMustsHave);
+    this.explanatoryNote.studentMusts = this.explanatoryNote.studentMusts.concat(this.addedStudentMustsKnow).
+    concat(this.addedStudentMustsCan).concat(this.addedStudentMustsHave);
+    console.log(this.explanatoryNote);
     this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
       this.explanatoryNote = data;
       this.router.navigate([Constants.COMPETENCE_ROUTE_PATH]);

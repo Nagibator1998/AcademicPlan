@@ -37,4 +37,8 @@ export class BaseService<T> {
     return this.httpClient.post<T[]>('/api' + this._urlPath + '/all', entities);
   }
 
+  public updateAll(entities: T[]): Observable<T[]>{
+    return this.httpClient.put<T[]>('/api' + this._urlPath + '/all', entities);
+  }
+
 }

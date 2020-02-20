@@ -31,7 +31,6 @@
     <thead class="thead-light">
     <tr>
       <th scope="col">Специальность</th>
-      <th scope="col">Курс</th>
       <th scope="col">Семестр</th>
       <th scope="col">Экзамен</th>
       <th scope="col">Курсовой проект</th>
@@ -41,9 +40,6 @@
     <tbody class="table-light">
     <tr *ngFor="let activeSpeciality of activeSpecialities" class="border-dark">
       <td>{{activeSpeciality.speciality.code + ' ' + activeSpeciality.speciality.name + (activeSpeciality.speciality.fullTime ? ' (Дневная форма)' : ' (Заочная форма)')}}</td>
-      <td>
-        <input type="number" [(ngModel)]="activeSpeciality.course">
-      </td>
       <td>
         <input type="number" [(ngModel)]="activeSpeciality.semester">
       </td>

@@ -2,6 +2,7 @@ package com.bntu.fitr.poit.zholudev.diplom.entity;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,18 +10,17 @@ import java.util.Set;
 public class ActiveSpeciality {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long explanatoryNoteId;
     @ManyToOne
     private Speciality speciality;
-    private Long course;
     private Long semester;
     private Boolean exam;
     @ManyToOne(cascade = CascadeType.ALL)
     private CourseProject courseProject;
-    @OneToMany(mappedBy = "activeSpecialityId")
-    private Set<ActiveTopic> activeTopics;
+    @OneToMany(mappedBy = "activeSpecialityId", cascade = CascadeType.ALL)
+    private List<ActiveTopic> activeTopics;
 
     public ActiveSpeciality() {
     }
@@ -49,14 +49,6 @@ public class ActiveSpeciality {
         this.speciality = speciality;
     }
 
-    public Long getCourse() {
-        return course;
-    }
-
-    public void setCourse(Long course) {
-        this.course = course;
-    }
-
     public Long getSemester() {
         return semester;
     }
@@ -81,11 +73,11 @@ public class ActiveSpeciality {
         this.courseProject = courseProject;
     }
 
-    public Set<ActiveTopic> getActiveTopics() {
+    public List<ActiveTopic> getActiveTopics() {
         return activeTopics;
     }
 
-    public void setActiveTopics(Set<ActiveTopic> activeTopics) {
+    public void setActiveTopics(List<ActiveTopic> activeTopics) {
         this.activeTopics = activeTopics;
     }
 }

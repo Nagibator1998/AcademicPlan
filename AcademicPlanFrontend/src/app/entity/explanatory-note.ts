@@ -3,6 +3,8 @@ import {Academic} from './academic';
 import {Standard} from './standard';
 import {StudentMust} from './student-must';
 import {Competence} from './competence';
+import {Section} from './section';
+import {ActiveSpeciality} from './active-speciality';
 
 export class ExplanatoryNote {
 
@@ -16,5 +18,7 @@ export class ExplanatoryNote {
   standards: Standard[];
   competences: Competence[];
   studentMusts: StudentMust[];
+  sections: Section[];
+  activeSpecialities: ActiveSpeciality[];
 
 }
