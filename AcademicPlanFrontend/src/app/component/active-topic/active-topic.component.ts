@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActiveTopic} from '../../entity/active-topic';
 import {Section} from '../../entity/section';
 import {ExplanatoryNoteService} from '../../service/explanatory-note.service';
@@ -6,7 +6,7 @@ import {Constants} from '../../const/constants';
 import {ExplanatoryNote} from '../../entity/explanatory-note';
 import {ActiveSpeciality} from '../../entity/active-speciality';
 import {ActiveSpecialityService} from '../../service/active-speciality.service';
-import {ActiveTopicService} from '../../service/active-topic.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-active-topic',
@@ -17,7 +17,8 @@ export class ActiveTopicComponent implements OnInit {
 
   private explanatoryNote: ExplanatoryNote;
 
-  constructor(private explanatoryNoteService: ExplanatoryNoteService, private activeSpecialityService: ActiveSpecialityService) { }
+  constructor(private explanatoryNoteService: ExplanatoryNoteService, private activeSpecialityService: ActiveSpecialityService,
+              private router: Router) { }
 
   ngOnInit() {
     this.explanatoryNoteService.get(parseInt(localStorage.getItem(Constants.EXPLANATORY_NOTE_ID_STRING))).subscribe(data => {
@@ -45,7 +46,7 @@ export class ActiveTopicComponent implements OnInit {
   saveActiveTopics(){
     this.activeSpecialityService.updateAll(this.explanatoryNote.activeSpecialities).subscribe(data => {
       this.explanatoryNote.activeSpecialities = data;
-      console.log(this.explanatoryNote);
+      this.router.navigate([Constants.LABORATORY_WORK_PATN]);
     })
 
   }

@@ -5,6 +5,7 @@ import {StudentMust} from './student-must';
 import {Competence} from './competence';
 import {Section} from './section';
 import {ActiveSpeciality} from './active-speciality';
+import {LaboratoryWork} from './laboratory-work';
 
 export class ExplanatoryNote {
 
@@ -20,5 +21,6 @@ export class ExplanatoryNote {
   studentMusts: StudentMust[];
   sections: Section[];
   activeSpecialities: ActiveSpeciality[];
+  laboratoryWorks: LaboratoryWork[];
 
 }

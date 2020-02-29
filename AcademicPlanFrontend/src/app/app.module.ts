@@ -20,6 +20,7 @@ import { ExplanatoryNoteComponent } from './component/explanatory-note/explanato
 import { CompetenceComponent } from './component/competence/competence.component';
 import { SectionComponent } from './component/section/section.component';
 import { ActiveTopicComponent } from './component/active-topic/active-topic.component';
+import { LaboratoryWorkComponent } from './component/laboratory-work/laboratory-work.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: Constants.COMPETENCE_ROUTE_PATH, component: CompetenceComponent},
   {path: Constants.SECTION_ROUTE_PATH, component: SectionComponent},
   {path: Constants.ACTIVE_TOPIC_PATH, component: ActiveTopicComponent},
+  {path: Constants.LABORATORY_WORK_PATN, component: LaboratoryWorkComponent},
   {path: '*', redirectTo: '/'}
 ];
 
@@ -51,7 +53,8 @@ const routes: Routes = [
     ExplanatoryNoteComponent,
     CompetenceComponent,
     SectionComponent,
-    ActiveTopicComponent
+    ActiveTopicComponent,
+    LaboratoryWorkComponent
   ],
   exports: [RouterModule],
   imports: [
