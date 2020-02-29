@@ -8,7 +8,6 @@ import {ActiveSpeciality} from '../../entity/active-speciality';
 import {Constants} from '../../const/constants';
 import {CourseProject} from '../../entity/course-project';
 import {ActiveSpecialityService} from '../../service/active-speciality.service';
-import {CourseProjectService} from '../../service/course-project.service';
 import {Router} from '@angular/router';
 
 @Component({

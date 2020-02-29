@@ -15,4 +15,9 @@ public class CourseProjectServiceImpl extends EntityServiceImpl<CourseProject, C
     public CourseProjectServiceImpl(CourseProjectRepository repository) {
         this.repository = repository;
     }
+
+    @Override
+    public CourseProject getByExplanatoryNoteId(Long explanatoryNoteId) {
+        return this.repository.getByExplanatoryNoteId(explanatoryNoteId);
+    }
 }

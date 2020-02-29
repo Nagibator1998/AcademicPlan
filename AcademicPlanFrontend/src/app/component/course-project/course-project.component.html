@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="form-group row justify-content-center">
+    <div class="col-lg-10">
+      <textarea type="text" rows="10" [(ngModel)]="courseProject.goal" class="form-control"
+                placeholder="Цель курсовой работы"></textarea>
+
+    </div>
+    <div class="col-lg-4 mt-2">
+      <input type="number" [(ngModel)]="courseProject.countOfHours" class="form-control"
+                placeholder="Кол-во часов на КР"/>
+    </div>
+    <div class="col-lg-4 mt-2">
+      <input type="number" [(ngModel)]="courseProject.countOfPages" class="form-control"
+             placeholder="Кол-во страниц"/>
+    </div>
+  </div>
+  <div class="form-group row justify-content-center">
+    <div class="col-lg-7">
+      <ng-autocomplete [data]="courseProjectTasks" [searchKeyword]="'text'" [itemTemplate]="itemTemplate"
+                       (selected)="setCourseProjectTask($event)" (inputChanged)="changeCourseProjectTask($event)"
+                       (inputCleared)="clearCourseProjectTask()"
+                       placeHolder="Задачи для КР"></ng-autocomplete>
+    </div>
+    <button class="btn btn-outline-primary" type="button" (click)="addCourseProjectTask()">Добавить</button>
+  </div>
+  <table class="table text-center">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Задачи для курсовой работы</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody class="table-light">
+    <tr *ngFor="let courseProjectTask of courseProject.courseProjectTasks" class="border-dark">
+      <td>{{courseProjectTask.text}}</td>
+      <td>
+        <button type="button" (click)="deleteCourseProjectTask(courseProjectTask)">Удалить</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table class="table text-center">
+    <thead class="thead-light">
+    <tr>
+      <th colspan="2">Темы для курсовой работы</th>
+      <th>
+        <button class="btn btn-outline-primary" type="button" (click)="addCourseProjectTopic()">Добавить тему</button>
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Номер</th>
+      <th scope="col">Описание</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody class="table-light">
+    <tr *ngFor="let courseProjectTopic of courseProject.courseProjectTopics" class="border-dark">
+      <td><input type="number" [(ngModel)]="courseProjectTopic.topicNumber"
+                 class="form-control"
+                 placeholder="Номер"></td>
+      <td>
+        <textarea type="text" [(ngModel)]="courseProjectTopic.text" class="form-control"
+                  placeholder="Описание" rows="3"></textarea>
+      </td>
+      <td>
+        <button type="button" (click)="deleteCourseProjectTopic(courseProjectTopic)">Удалить</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="row justify-content-center">
+    <button type="button" class="btn btn-outline-primary" (click)="saveCourseProject()">Продолжить</button>
+  </div>
+</div>
+
+<ng-template #itemTemplate let-item>
+  <a [innerHTML]="item.text"></a>
+</ng-template>

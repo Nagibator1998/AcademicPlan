@@ -95,6 +95,13 @@ CREATE TABLE IF NOT EXISTS course_project_tasks
     PRIMARY KEY (id)
 );
 
+INSERT INTO course_project_tasks (text)
+VALUES ('самостоятельное выполнение задания');
+INSERT INTO course_project_tasks (text)
+VALUES ('работа с литературой, изучение теоретических аспектов поставленной задачи');
+INSERT INTO course_project_tasks (text)
+VALUES ('систематизация и закрепление полученных во время учебы теоретиче-ских и практических навыков');
+
 CREATE TABLE IF NOT EXISTS competence_codes
 (
     id   bigint(20)  NOT NULL AUTO_INCREMENT,
@@ -338,10 +345,10 @@ CREATE TABLE IF NOT EXISTS control_questions
 CREATE TABLE IF NOT EXISTS course_projects_course_project_tasks
 (
     course_project_id      bigint(20) NOT NULL,
-    course_project_task_id bigint(20) NOT NULL,
-    PRIMARY KEY (course_project_id, course_project_task_id),
+    course_project_tasks_id bigint(20) NOT NULL,
+    PRIMARY KEY (course_project_id, course_project_tasks_id),
     FOREIGN KEY (course_project_id) REFERENCES course_projects (id),
-    FOREIGN KEY (course_project_task_id) REFERENCES course_project_tasks (id)
+    FOREIGN KEY (course_project_tasks_id) REFERENCES course_project_tasks (id)
 );
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_creators

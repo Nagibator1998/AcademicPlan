@@ -15,9 +15,9 @@ public class CourseProject {
     private String goal;
     private Long countOfPages;
     private Long countOfHours;
-    @OneToMany(mappedBy = "id")
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<CourseProjectTask> courseProjectTasks;
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "courseProjectId", cascade = CascadeType.ALL)
     private List<CourseProjectTopic> courseProjectTopics;
 
 

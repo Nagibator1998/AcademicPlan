@@ -21,6 +21,7 @@ import { CompetenceComponent } from './component/competence/competence.component
 import { SectionComponent } from './component/section/section.component';
 import { ActiveTopicComponent } from './component/active-topic/active-topic.component';
 import { LaboratoryWorkComponent } from './component/laboratory-work/laboratory-work.component';
+import { CourseProjectComponent } from './component/course-project/course-project.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: Constants.SECTION_ROUTE_PATH, component: SectionComponent},
   {path: Constants.ACTIVE_TOPIC_PATH, component: ActiveTopicComponent},
   {path: Constants.LABORATORY_WORK_PATN, component: LaboratoryWorkComponent},
+  {path: Constants.COURSE_PROJECT_PATH, component: CourseProjectComponent},
   {path: '*', redirectTo: '/'}
 ];
 
@@ -54,7 +56,8 @@ const routes: Routes = [
     CompetenceComponent,
     SectionComponent,
     ActiveTopicComponent,
-    LaboratoryWorkComponent
+    LaboratoryWorkComponent,
+    CourseProjectComponent
   ],
   exports: [RouterModule],
   imports: [
