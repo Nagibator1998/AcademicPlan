@@ -22,6 +22,9 @@ import { SectionComponent } from './component/section/section.component';
 import { ActiveTopicComponent } from './component/active-topic/active-topic.component';
 import { LaboratoryWorkComponent } from './component/laboratory-work/laboratory-work.component';
 import { CourseProjectComponent } from './component/course-project/course-project.component';
+import { DiagnosticToolComponent } from './component/diagnostic-tool/diagnostic-tool.component';
+import { ControlQuestionComponent } from './component/control-question/control-question.component';
+import { IndependentWorkFormComponent } from './component/independent-work-form/independent-work-form.component';
 
 
 const routes: Routes = [
@@ -36,8 +39,11 @@ const routes: Routes = [
   {path: Constants.COMPETENCE_ROUTE_PATH, component: CompetenceComponent},
   {path: Constants.SECTION_ROUTE_PATH, component: SectionComponent},
   {path: Constants.ACTIVE_TOPIC_PATH, component: ActiveTopicComponent},
-  {path: Constants.LABORATORY_WORK_PATN, component: LaboratoryWorkComponent},
+  {path: Constants.LABORATORY_WORK_PATH, component: LaboratoryWorkComponent},
   {path: Constants.COURSE_PROJECT_PATH, component: CourseProjectComponent},
+  {path: Constants.CONTROL_QUESTION_PATH, component: ControlQuestionComponent},
+  {path: Constants.DIAGNOSTIC_TOOL_PATH, component: DiagnosticToolComponent},
+  {path: Constants.INDEPENDENT_WORK_FORM_PATH, component: IndependentWorkFormComponent},
   {path: '*', redirectTo: '/'}
 ];
 
@@ -57,7 +63,10 @@ const routes: Routes = [
     SectionComponent,
     ActiveTopicComponent,
     LaboratoryWorkComponent,
-    CourseProjectComponent
+    CourseProjectComponent,
+    DiagnosticToolComponent,
+    ControlQuestionComponent,
+    IndependentWorkFormComponent
   ],
   exports: [RouterModule],
   imports: [

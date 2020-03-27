@@ -70,7 +70,7 @@ VALUES (3, 'HAVE');
 CREATE TABLE IF NOT EXISTS independent_work_forms
 (
     id   bigint(20)   NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
+    text varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -418,19 +418,19 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_competences
 CREATE TABLE IF NOT EXISTS explanatory_notes_diagnostic_tools
 (
     explanatory_note_id bigint(20) NOT NULL,
-    diagnostic_tool_id  bigint(20) NOT NULL,
-    PRIMARY KEY (explanatory_note_id, diagnostic_tool_id),
-    FOREIGN KEY (diagnostic_tool_id) REFERENCES diagnostic_tools (id),
+    diagnostic_tools_id  bigint(20) NOT NULL,
+    PRIMARY KEY (explanatory_note_id, diagnostic_tools_id),
+    FOREIGN KEY (diagnostic_tools_id) REFERENCES diagnostic_tools (id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id)
 );
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_independent_work_forms
 (
     explanatory_note_id      bigint(20) NOT NULL,
-    independent_work_form_id bigint(20) NOT NULL,
-    PRIMARY KEY (explanatory_note_id, independent_work_form_id),
+    independent_work_forms_id bigint(20) NOT NULL,
+    PRIMARY KEY (explanatory_note_id, independent_work_forms_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),
-    FOREIGN KEY (independent_work_form_id) REFERENCES independent_work_forms (id)
+    FOREIGN KEY (independent_work_forms_id) REFERENCES independent_work_forms (id)
 );
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_standards

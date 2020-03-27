@@ -6,6 +6,7 @@ import {Constants} from '../../const/constants';
 import {CourseProjectTask} from '../../entity/course-project-task';
 import {CourseProjectTaskService} from '../../service/course-project-task.service';
 import {CourseProjectTopic} from '../../entity/course-project-topic';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-course-project',
@@ -16,9 +17,10 @@ export class CourseProjectComponent implements OnInit {
 
   private courseProject: CourseProject;
   private courseProjectTasks: CourseProjectTask[] = [];
-  private changedCourseProjectTask: CourseProjectTask;
+  private changedCourseProjectTask: CourseProjectTask = new CourseProjectTask();
 
-  constructor(private courseProjectService: CourseProjectService, private courseProjectTaskService: CourseProjectTaskService) {
+  constructor(private courseProjectService: CourseProjectService, private courseProjectTaskService: CourseProjectTaskService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -88,6 +90,7 @@ export class CourseProjectComponent implements OnInit {
     console.log(this.courseProject);
     this.courseProjectService.update(this.courseProject).subscribe(data => {
       this.courseProject = data;
+      this.router.navigate([Constants.CONTROL_QUESTION_PATH]);
     })
   }
 }

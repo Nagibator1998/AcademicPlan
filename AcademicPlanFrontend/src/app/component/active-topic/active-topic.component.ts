@@ -46,7 +46,7 @@ export class ActiveTopicComponent implements OnInit {
   saveActiveTopics(){
     this.activeSpecialityService.updateAll(this.explanatoryNote.activeSpecialities).subscribe(data => {
       this.explanatoryNote.activeSpecialities = data;
-      this.router.navigate([Constants.LABORATORY_WORK_PATN]);
+      this.router.navigate([Constants.LABORATORY_WORK_PATH]);
     })
 
   }
