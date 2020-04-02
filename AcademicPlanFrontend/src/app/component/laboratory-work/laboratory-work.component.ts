@@ -59,7 +59,6 @@ export class LaboratoryWorkComponent implements OnInit {
     });
     this.courseProjectService.getByExplanatoryNoteId(this.explanatoryNote.id).subscribe(data => {
       let routePath = Constants.COURSE_PROJECT_PATH;
-      console.log(this.explanatoryNote);
       if(data == null){
         routePath = Constants.CONTROL_QUESTION_PATH;
       }

@@ -18,6 +18,7 @@ export class Constants {
   public static CONTROL_QUESTION_PATH = 'controlQuestion';
   public static DIAGNOSTIC_TOOL_PATH = 'diagnosticTool';
   public static INDEPENDENT_WORK_FORM_PATH = 'independentWorkForm';
+  public static LITERATURE_PATH = 'literature';
 
   public static STUDENT_MUST_KNOW_TYPE: StudentMustType = {'id': 1, 'type': 'KNOW'};
   public static STUDENT_MUST_CAN_TYPE: StudentMustType = {'id': 2, 'type': 'CAN'};

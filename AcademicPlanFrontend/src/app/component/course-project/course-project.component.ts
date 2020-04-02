@@ -87,7 +87,6 @@ export class CourseProjectComponent implements OnInit {
   }
 
   saveCourseProject(){
-    console.log(this.courseProject);
     this.courseProjectService.update(this.courseProject).subscribe(data => {
       this.courseProject = data;
       this.router.navigate([Constants.CONTROL_QUESTION_PATH]);

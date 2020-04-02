@@ -391,19 +391,19 @@ VALUES (NULL, 'Владеть исследовательскими навыка�
 CREATE TABLE IF NOT EXISTS explanatory_notes_additional_literature
 (
     explanatory_note_id bigint(20) NOT NULL,
-    literature_id       bigint(20) NOT NULL,
-    PRIMARY KEY (explanatory_note_id, literature_id),
+    additional_literature_id       bigint(20) NOT NULL,
+    PRIMARY KEY (explanatory_note_id, additional_literature_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),
-    FOREIGN KEY (literature_id) REFERENCES literature (id)
+    FOREIGN KEY (additional_literature_id) REFERENCES literature (id)
 );
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_basic_literature
 (
     explanatory_note_id bigint(20) NOT NULL,
-    literature_id       bigint(20) NOT NULL,
-    PRIMARY KEY (explanatory_note_id, literature_id),
+    basic_literature_id       bigint(20) NOT NULL,
+    PRIMARY KEY (explanatory_note_id, basic_literature_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),
-    FOREIGN KEY (literature_id) REFERENCES literature (id)
+    FOREIGN KEY (basic_literature_id) REFERENCES literature (id)
 );
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_competences

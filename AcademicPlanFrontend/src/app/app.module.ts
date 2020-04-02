@@ -25,6 +25,7 @@ import { CourseProjectComponent } from './component/course-project/course-projec
 import { DiagnosticToolComponent } from './component/diagnostic-tool/diagnostic-tool.component';
 import { ControlQuestionComponent } from './component/control-question/control-question.component';
 import { IndependentWorkFormComponent } from './component/independent-work-form/independent-work-form.component';
+import { LiteratureComponent } from './component/literature/literature.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
   {path: Constants.CONTROL_QUESTION_PATH, component: ControlQuestionComponent},
   {path: Constants.DIAGNOSTIC_TOOL_PATH, component: DiagnosticToolComponent},
   {path: Constants.INDEPENDENT_WORK_FORM_PATH, component: IndependentWorkFormComponent},
+  {path: Constants.LITERATURE_PATH, component: LiteratureComponent},
   {path: '*', redirectTo: '/'}
 ];
 
@@ -66,7 +68,8 @@ const routes: Routes = [
     CourseProjectComponent,
     DiagnosticToolComponent,
     ControlQuestionComponent,
-    IndependentWorkFormComponent
+    IndependentWorkFormComponent,
+    LiteratureComponent
   ],
   exports: [RouterModule],
   imports: [

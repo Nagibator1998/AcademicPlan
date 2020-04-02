@@ -1,6 +1,6 @@
 
-Isquid:S4925"-Remove this "Class.forName()", it is useless.(¹µÖÁüÿÿÿÿ
-6squid:S2068" Remove this hard-coded password.(Œ€ð:
-_squid:S2259"HA "NullPointerException" could be thrown; "connection" is nullable here.(ôêÂœ
-?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
 ?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+_squid:S2259"HA "NullPointerException" could be thrown; "connection" is nullable here.(ôêÂœ
+6squid:S2068" Remove this hard-coded password.(Œ€ð:
+?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+Isquid:S4925"-Remove this "Class.forName()", it is useless.(¹µÖÁüÿÿÿÿ

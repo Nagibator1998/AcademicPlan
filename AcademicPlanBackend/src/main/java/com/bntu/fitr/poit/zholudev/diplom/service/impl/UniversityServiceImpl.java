@@ -15,4 +15,9 @@ public class UniversityServiceImpl extends EntityServiceImpl<University, Univers
     public UniversityServiceImpl(UniversityRepository repository) {
         this.repository = repository;
     }
+
+    @Override
+    public University getBySpecialityId(Long specialityId) {
+        return this.repository.getUniversityBySpecialityId(specialityId);
+    }
 }

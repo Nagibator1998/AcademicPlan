@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {DiagnosticTool} from '../../entity/diagnostic-tool';
+import {Component, OnInit} from '@angular/core';
 import {ExplanatoryNote} from '../../entity/explanatory-note';
-import {DiagnosticToolService} from '../../service/diagnostic-tool.service';
 import {ExplanatoryNoteService} from '../../service/explanatory-note.service';
 import {Router} from '@angular/router';
 import {Constants} from '../../const/constants';
 import {IndependentWorkForm} from '../../entity/independent-work-form';
 import {IndependentWorkFormService} from '../../service/independent-work-form.service';
+import {ReportService} from '../../service/report.service';
 
 @Component({
   selector: 'app-independent-work-form',
@@ -21,7 +20,7 @@ export class IndependentWorkFormComponent implements OnInit {
   private explanatoryNote: ExplanatoryNote;
 
   constructor(private independentWorkFormService: IndependentWorkFormService, private explanatoryNoteService: ExplanatoryNoteService,
-              private router: Router) {
+              private router: Router, private reportService: ReportService) {
   }
 
   ngOnInit() {
@@ -57,7 +56,8 @@ export class IndependentWorkFormComponent implements OnInit {
     this.explanatoryNote.independentWorkForms = this.addedIndependentWorkForms;
     this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
       this.explanatoryNote = data;
-      this.router.navigate([Constants.INDEPENDENT_WORK_FORM_PATH]);
+      this.reportService.get(this.explanatoryNote.id).subscribe();
+
     });
   }
 
