@@ -1,6 +1,7 @@
 package com.bntu.fitr.poit.zholudev.diplom.report.configuration;
 
 import com.bntu.fitr.poit.zholudev.diplom.report.manager.ReportManager;
+import org.apache.poi.xwpf.usermodel.BreakType;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -35,10 +36,20 @@ public class DocxFileHandler {
             for (int i = runs.size() - 1; i > 0; i--) {
                 paragraph.removeRun(i);
             }
-            runs.get(0).setText(changedText, 0);
-
+            XWPFRun firstRun = runs.get(0);
+            if(changedText.contains("\n")){
+                String[] dividedByBreak = changedText.split("\n");
+                firstRun.setText("", 0);
+                for (String dividedString : dividedByBreak) {
+                    firstRun.setText(dividedString);
+                    firstRun.addCarriageReturn();
+                }
+            }
+            else {
+                firstRun.setText(changedText, 0);
+            }
         }
-        FileOutputStream outputStream = new FileOutputStream("Apache POI Word Test.docx");
+        FileOutputStream outputStream = new FileOutputStream(reportManager.getFileName() + ".docx");
         document.write(outputStream);
         outputStream.close();
     }
@@ -57,8 +68,6 @@ public class DocxFileHandler {
                 text = text.replace(text.substring(text.indexOf(START_OF_METHOD),
                         text.indexOf(END_OF_METHOD) + END_OF_METHOD.length()), insertString);
 
-                System.out.println(text);
-
             }
         }
         return text;
@@ -67,8 +76,7 @@ public class DocxFileHandler {
     private boolean isMethodExists(String methodName) {
         Class clazz = this.reportManager.getClass();
         boolean isMethodExists = false;
-
-        for (Method method : clazz.getDeclaredMethods()) {
+        for (Method method : clazz.getMethods()) {
             if (method.getName().equals(methodName)) {
                 isMethodExists = true;
                 break;

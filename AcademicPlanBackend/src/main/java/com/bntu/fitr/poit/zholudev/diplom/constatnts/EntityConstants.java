@@ -1,5 +1,7 @@
 package com.bntu.fitr.poit.zholudev.diplom.constatnts;
 
+import com.bntu.fitr.poit.zholudev.diplom.entity.StudentMustType;
+
 public class EntityConstants {
 
     public static final String ACADEMIC_DEGREE_NAME = "academicDegree";
@@ -29,5 +31,8 @@ public class EntityConstants {
     public static final String TOPIC_NAME = "topic";
     public static final String UNIVERSITY_NAME = "university";
 
+    public static final StudentMustType STUDENT_MUST_KNOW_TYPE = new StudentMustType(1L, "KNOW");
+    public static final StudentMustType STUDENT_MUST_CAN_TYPE = new StudentMustType(2L, "CAN");
+    public static final StudentMustType STUDENT_MUST_HAVE_TYPE = new StudentMustType(3L, "HAVE");
 
 }

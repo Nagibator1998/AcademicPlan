@@ -487,3 +487,11 @@ hAcademicPlanBackend/src/main/java/com/bntu/fitr/poit/zholudev/diplom/service/im
 _AcademicPlanBackend/src/main/java/com/bntu/fitr/poit/zholudev/diplom/util/QueriesForReport.java,c\f\cf97f8232c69f580a933649ef5d76fc529c10e3d
 ˜
 hAcademicPlanBackend/src/main/java/com/bntu/fitr/poit/zholudev/diplom/util/impl/QueriesForReportImpl.java,a\6\a666ab31f3d6812e10ff80d2a9467a150b064e75
+ž
+nAcademicPlanBackend/src/main/java/com/bntu/fitr/poit/zholudev/diplom/report/configuration/DocxFileHandler.java,a\7\a76d8408ee8126f67378fcb58cb2424f5b278d85
+§
+wAcademicPlanBackend/src/main/java/com/bntu/fitr/poit/zholudev/diplom/report/manager/impl/AcademicPlanReportManager.java,5\8\583101be45f7d27e0174bfb3c1f200e416b8ec0c
+–
+fAcademicPlanBackend/src/main/java/com/bntu/fitr/poit/zholudev/diplom/report/manager/ReportManager.java,9\8\981b1eba982423bf63ea129fff63b37115b16a77
+z
+JAcademicPlanFrontend/src/app/component/literature/literature.component.css,3\5\357dd5aba5434092a21e6388761b1526e3a8a2b4
