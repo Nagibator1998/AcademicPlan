@@ -3,7 +3,7 @@
     <thead class="thead-light">
     <tr>
       <th colspan="3">
-        {{activeSpeciality.speciality.code + ' ' + activeSpeciality.speciality.name + ' ' + activeSpeciality.semester + ' семестр'}}</th>
+        {{activeSpeciality.speciality.code + ' ' + activeSpeciality.speciality.name + (activeSpeciality.speciality.fullTime ? ' (дневное)' : ' (заочное)')  + ' ' + activeSpeciality.semester + ' семестр'}}</th>
       <th colspan="4">
         <ng-autocomplete [data]="explanatoryNote.sections" [searchKeyword]="'name'" [itemTemplate]="itemTemplate"
                          (selected)="setSection($event, activeSpeciality)"

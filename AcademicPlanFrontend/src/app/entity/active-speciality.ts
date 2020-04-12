@@ -10,6 +10,7 @@ export class ActiveSpeciality {
   semester: number;
   exam: boolean = false;
   courseProject: CourseProject;
+  hours: number;
   activeTopics: ActiveTopic[];
 
 }

@@ -1,15 +1,17 @@
 package com.bntu.fitr.poit.zholudev.diplom.report.configuration;
 
 import com.bntu.fitr.poit.zholudev.diplom.report.manager.ReportManager;
-import org.apache.poi.xwpf.usermodel.BreakType;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.xmlbeans.XmlCursor;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DocxFileHandler {
 
@@ -27,34 +29,31 @@ public class DocxFileHandler {
     public void handle() throws Exception {
         XWPFDocument document = new XWPFDocument(this.file);
         List<XWPFParagraph> paragraphs = document.getParagraphs();
+        Map<XmlCursor, Method> methodsToExecute = new HashMap<>();
         for (XWPFParagraph paragraph : paragraphs) {
             List<XWPFRun> runs = paragraph.getRuns();
             if (runs.isEmpty()) {
                 continue;
             }
-            String changedText = changedTextByExpression(paragraph);
-            for (int i = runs.size() - 1; i > 0; i--) {
-                paragraph.removeRun(i);
-            }
-            XWPFRun firstRun = runs.get(0);
-            if(changedText.contains("\n")){
-                String[] dividedByBreak = changedText.split("\n");
-                firstRun.setText("", 0);
-                for (String dividedString : dividedByBreak) {
-                    firstRun.setText(dividedString);
-                    firstRun.addCarriageReturn();
+            Method method = getMethodToExecute(paragraph);
+            if (method != null) {
+                for (int i = runs.size() - 1; i >= 0; i--) {
+                    paragraph.removeRun(i);
                 }
-            }
-            else {
-                firstRun.setText(changedText, 0);
+                methodsToExecute.put(paragraph.getCTP().newCursor(), method);
             }
         }
+
+        for(Map.Entry<XmlCursor, Method> entry: methodsToExecute.entrySet()){
+            entry.getValue().invoke(this.reportManager, entry.getKey(), document);
+        }
+
         FileOutputStream outputStream = new FileOutputStream(reportManager.getFileName() + ".docx");
         document.write(outputStream);
         outputStream.close();
     }
 
-    private String changedTextByExpression(XWPFParagraph paragraph) throws Exception {
+    private Method getMethodToExecute(XWPFParagraph paragraph) throws Exception {
         String text = paragraph.getText();
 
         if (text.contains(START_OF_METHOD) && text.contains(END_OF_METHOD)) {
@@ -62,22 +61,19 @@ public class DocxFileHandler {
                     text.indexOf(END_OF_METHOD));
 
             if (isMethodExists(methodName)) {
-                Method method = this.reportManager.getClass().getDeclaredMethod(methodName);
+                Method method = this.reportManager.getClass().getDeclaredMethod(methodName, XmlCursor.class, XWPFDocument.class);
                 method.setAccessible(true);
-                String insertString = (String) method.invoke(this.reportManager);
-                text = text.replace(text.substring(text.indexOf(START_OF_METHOD),
-                        text.indexOf(END_OF_METHOD) + END_OF_METHOD.length()), insertString);
-
+                return method;
             }
         }
-        return text;
+        return null;
     }
 
     private boolean isMethodExists(String methodName) {
         Class clazz = this.reportManager.getClass();
         boolean isMethodExists = false;
         for (Method method : clazz.getMethods()) {
-            if (method.getName().equals(methodName)) {
+            if (method.getName().equals(methodName) && method.getParameterCount() == 2) {
                 isMethodExists = true;
                 break;
             }

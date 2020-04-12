@@ -43,6 +43,7 @@ export class CompetenceComponent implements OnInit {
 
   saveCompetences() {
     this.explanatoryNote.competences = this.addedCompetences;
+    console.log(this.explanatoryNote.competences);
     this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
       this.explanatoryNote = data;
       this.router.navigate([Constants.SECTION_ROUTE_PATH]);

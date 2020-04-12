@@ -12,4 +12,7 @@ public interface QueriesForAcademicPlan {
                                                                          ExplanatoryNote explanatoryNote);
     List<Speciality> getSpecialitiesForExplanatoryNote(ExplanatoryNote explanatoryNote);
     List<Competence> getCompetencesBySpecialityAndExplanatoryNote(Speciality speciality, ExplanatoryNote explanatoryNote);
+    List<Speciality> getFullTimeSpecialitiesForExplanatoryNote(ExplanatoryNote explanatoryNote);
+    List<Speciality> getPartTimeSpecialitiesForExplanatoryNote(ExplanatoryNote explanatoryNote);
+    Section getSectionForTopic(Topic topic);
 }

@@ -278,6 +278,7 @@ CREATE TABLE IF NOT EXISTS active_specialities
     exam                bit(1)     NOT NULL,
     explanatory_note_id bigint(20) NOT NULL,
     semester            bigint(20) NOT NULL,
+    hours               bigint(20) NOT NULL,
     course_project_id   bigint(20) DEFAULT NULL,
     speciality_id       bigint(20) NOT NULL,
     PRIMARY KEY (id),
@@ -344,7 +345,7 @@ CREATE TABLE IF NOT EXISTS control_questions
 
 CREATE TABLE IF NOT EXISTS course_projects_course_project_tasks
 (
-    course_project_id      bigint(20) NOT NULL,
+    course_project_id       bigint(20) NOT NULL,
     course_project_tasks_id bigint(20) NOT NULL,
     PRIMARY KEY (course_project_id, course_project_tasks_id),
     FOREIGN KEY (course_project_id) REFERENCES course_projects (id),
@@ -390,8 +391,8 @@ VALUES (NULL, 'Владеть исследовательскими навыка�
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_additional_literature
 (
-    explanatory_note_id bigint(20) NOT NULL,
-    additional_literature_id       bigint(20) NOT NULL,
+    explanatory_note_id      bigint(20) NOT NULL,
+    additional_literature_id bigint(20) NOT NULL,
     PRIMARY KEY (explanatory_note_id, additional_literature_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),
     FOREIGN KEY (additional_literature_id) REFERENCES literature (id)
@@ -400,7 +401,7 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_additional_literature
 CREATE TABLE IF NOT EXISTS explanatory_notes_basic_literature
 (
     explanatory_note_id bigint(20) NOT NULL,
-    basic_literature_id       bigint(20) NOT NULL,
+    basic_literature_id bigint(20) NOT NULL,
     PRIMARY KEY (explanatory_note_id, basic_literature_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),
     FOREIGN KEY (basic_literature_id) REFERENCES literature (id)
@@ -418,7 +419,7 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_competences
 CREATE TABLE IF NOT EXISTS explanatory_notes_diagnostic_tools
 (
     explanatory_note_id bigint(20) NOT NULL,
-    diagnostic_tools_id  bigint(20) NOT NULL,
+    diagnostic_tools_id bigint(20) NOT NULL,
     PRIMARY KEY (explanatory_note_id, diagnostic_tools_id),
     FOREIGN KEY (diagnostic_tools_id) REFERENCES diagnostic_tools (id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id)
@@ -426,7 +427,7 @@ CREATE TABLE IF NOT EXISTS explanatory_notes_diagnostic_tools
 
 CREATE TABLE IF NOT EXISTS explanatory_notes_independent_work_forms
 (
-    explanatory_note_id      bigint(20) NOT NULL,
+    explanatory_note_id       bigint(20) NOT NULL,
     independent_work_forms_id bigint(20) NOT NULL,
     PRIMARY KEY (explanatory_note_id, independent_work_forms_id),
     FOREIGN KEY (explanatory_note_id) REFERENCES explanatory_notes (id),

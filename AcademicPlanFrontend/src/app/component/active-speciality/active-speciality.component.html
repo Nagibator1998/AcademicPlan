@@ -32,6 +32,7 @@
     <tr>
       <th scope="col">Специальность</th>
       <th scope="col">Семестр</th>
+      <th scope="col">Отведено часов</th>
       <th scope="col">Экзамен</th>
       <th scope="col">Курсовой проект</th>
       <th scope="col"></th>
@@ -42,6 +43,9 @@
       <td>{{activeSpeciality.speciality.code + ' ' + activeSpeciality.speciality.name + (activeSpeciality.speciality.fullTime ? ' (Дневная форма)' : ' (Заочная форма)')}}</td>
       <td>
         <input type="number" [(ngModel)]="activeSpeciality.semester">
+      </td>
+      <td>
+        <input type="number" [(ngModel)]="activeSpeciality.hours">
       </td>
       <td>
         <input type="checkbox" [(ngModel)]="activeSpeciality.exam">

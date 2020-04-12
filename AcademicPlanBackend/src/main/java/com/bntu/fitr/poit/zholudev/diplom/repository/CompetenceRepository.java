@@ -11,7 +11,7 @@ import java.util.Collection;
 @Repository
 public interface CompetenceRepository extends CrudRepository<Competence, Long> {
 
-    @Query(value = "select c.* from competences c, active_specialities a where a.explanatory_note_id = :explanatoryNoteId " +
+    @Query(value = "select distinct c.* from competences c, active_specialities a where a.explanatory_note_id = :explanatoryNoteId " +
             "and (a.speciality_id = c.speciality_id or c.speciality_id is NULL)", nativeQuery = true)
     Collection<Competence> getCompetencesForExplanatoryNote(@Param(value = "explanatoryNoteId") Long explanatoryNoteId);
 }

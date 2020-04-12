@@ -2,6 +2,7 @@ package com.bntu.fitr.poit.zholudev.diplom.util.query.impl;
 
 import com.bntu.fitr.poit.zholudev.diplom.entity.*;
 import com.bntu.fitr.poit.zholudev.diplom.util.query.QueriesForAcademicPlan;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -41,6 +42,18 @@ public class QueriesForAcademicPlanImpl implements QueriesForAcademicPlan {
                     "acs.explanatory_note_id = ? " +
                     "and acs.speciality_id = spec.id";
 
+    private static final String GET_FULL_TIME_SPECIALITIES_FOR_EXPLANATORY_NOTE =
+            "select distinct spec.* from specialities spec, active_specialities acs where " +
+                    "acs.explanatory_note_id = ? " +
+                    "and acs.speciality_id = spec.id " +
+                    "and spec.full_time = 1";
+
+    private static final String GET_PART_TIME_SPECIALITIES_FOR_EXPLANATORY_NOTE =
+            "select distinct spec.* from specialities spec, active_specialities acs where " +
+                    "acs.explanatory_note_id = ? " +
+                    "and acs.speciality_id = spec.id " +
+                    "and spec.full_time = 0";
+
     private static final String GET_COMPETENCES_BY_SPECIALITY_AND_EXPLANATORY_NOTE =
             "select comp.* from competences comp, explanatory_notes_competences expnc where " +
                     "expnc.explanatory_note_id = ? " +
@@ -50,12 +63,14 @@ public class QueriesForAcademicPlanImpl implements QueriesForAcademicPlan {
     private static final String GET_COMPETENCE_CODE_BY_ID =
             "select * from competence_codes where competence_codes.id = ?";
 
+    private static final String GET_SECTION_FOR_TOPIC = "select * from sections where sections.id = ?";
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public University getUniversityByExplanatoryNote(ExplanatoryNote explanatoryNote) {
         Long specialityId = explanatoryNote.getActiveSpecialities().get(0).getSpeciality().getId();
-        return jdbcTemplate.query(GET_UNIVERSITY_BY_EXPLANATORY_NOTE_QUERY, new Object[]{specialityId}, get_university);
+        return jdbcTemplate.query(GET_UNIVERSITY_BY_EXPLANATORY_NOTE_QUERY, new Object[]{specialityId}, getUniversity);
     }
 
     @Override
@@ -78,7 +93,7 @@ public class QueriesForAcademicPlanImpl implements QueriesForAcademicPlan {
     @Override
     public University getUniversityByDepartment(Department department) {
         Long facultyId = department.getFacultyId();
-        return jdbcTemplate.query(GET_UNIVERSITY_BY_DEPARTMENT_QUERY, new Object[]{facultyId}, get_university);
+        return jdbcTemplate.query(GET_UNIVERSITY_BY_DEPARTMENT_QUERY, new Object[]{facultyId}, getUniversity);
     }
 
     @Override
@@ -99,21 +114,7 @@ public class QueriesForAcademicPlanImpl implements QueriesForAcademicPlan {
 
     @Override
     public List<Speciality> getSpecialitiesForExplanatoryNote(ExplanatoryNote explanatoryNote) {
-        return jdbcTemplate.query(GET_SPECIALITIES_FOR_EXPLANATORY_NOTE, new Object[]{explanatoryNote.getId()}, resultSet -> {
-            List<Speciality> specialities = new ArrayList<>();
-            while (resultSet.next()) {
-                Speciality speciality = new Speciality();
-                speciality.setId(resultSet.getLong("id"));
-                speciality.setName(resultSet.getString("name"));
-                speciality.setAbbreviation(resultSet.getString("abbreviation"));
-                speciality.setCode(resultSet.getString("code"));
-                speciality.setDepartmentId(resultSet.getLong("department_id"));
-                speciality.setDirection(resultSet.getBoolean("direction"));
-                speciality.setFullTime(resultSet.getBoolean("full_time"));
-                specialities.add(speciality);
-            }
-            return specialities;
-        });
+        return jdbcTemplate.query(GET_SPECIALITIES_FOR_EXPLANATORY_NOTE, new Object[]{explanatoryNote.getId()}, getSpecialities);
     }
 
     @Override
@@ -132,6 +133,29 @@ public class QueriesForAcademicPlanImpl implements QueriesForAcademicPlan {
                 });
     }
 
+    @Override
+    public List<Speciality> getFullTimeSpecialitiesForExplanatoryNote(ExplanatoryNote explanatoryNote) {
+        return jdbcTemplate.query(GET_FULL_TIME_SPECIALITIES_FOR_EXPLANATORY_NOTE, new Object[]{explanatoryNote.getId()}, getSpecialities);
+    }
+
+    @Override
+    public List<Speciality> getPartTimeSpecialitiesForExplanatoryNote(ExplanatoryNote explanatoryNote) {
+        return jdbcTemplate.query(GET_PART_TIME_SPECIALITIES_FOR_EXPLANATORY_NOTE, new Object[]{explanatoryNote.getId()}, getSpecialities);
+    }
+
+    @Override
+    public Section getSectionForTopic(Topic topic) {
+        return jdbcTemplate.query(GET_SECTION_FOR_TOPIC, new Object[]{topic.getSectionId()}, resultSet -> {
+            resultSet.next();
+            Section section = new Section();
+            section.setId(resultSet.getLong("id"));
+            section.setName(resultSet.getString("name"));
+            section.setExplanatoryNoteId(resultSet.getLong("explanatory_note_id"));
+            section.setSectionNumber(resultSet.getLong("section_number"));
+            return section;
+        });
+    }
+
     private CompetenceCode getCompetenceCodeById(Long id) {
         return jdbcTemplate.query(GET_COMPETENCE_CODE_BY_ID, new Object[]{id}, resultSet -> {
             resultSet.next();
@@ -142,15 +166,28 @@ public class QueriesForAcademicPlanImpl implements QueriesForAcademicPlan {
         });
     }
 
-    private ResultSetExtractor<University> get_university = new ResultSetExtractor<University>() {
-        @Override
-        public University extractData(ResultSet resultSet) throws SQLException, DataAccessException {
-            resultSet.next();
-            University university = new University();
-            university.setId(resultSet.getLong("id"));
-            university.setName(resultSet.getString("name"));
-            university.setAbbreviation(resultSet.getString("abbreviation"));
-            return university;
+    private ResultSetExtractor<University> getUniversity = resultSet -> {
+        resultSet.next();
+        University university = new University();
+        university.setId(resultSet.getLong("id"));
+        university.setName(resultSet.getString("name"));
+        university.setAbbreviation(resultSet.getString("abbreviation"));
+        return university;
+    };
+
+    private ResultSetExtractor<List<Speciality>> getSpecialities = resultSet -> {
+        List<Speciality> specialities = new ArrayList<>();
+        while (resultSet.next()) {
+            Speciality speciality = new Speciality();
+            speciality.setId(resultSet.getLong("id"));
+            speciality.setName(resultSet.getString("name"));
+            speciality.setAbbreviation(resultSet.getString("abbreviation"));
+            speciality.setCode(resultSet.getString("code"));
+            speciality.setDepartmentId(resultSet.getLong("department_id"));
+            speciality.setDirection(resultSet.getBoolean("direction"));
+            speciality.setFullTime(resultSet.getBoolean("full_time"));
+            specialities.add(speciality);
         }
+        return specialities;
     };
 }

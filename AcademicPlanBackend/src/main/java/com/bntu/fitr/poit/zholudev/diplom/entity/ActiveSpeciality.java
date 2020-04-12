@@ -17,6 +17,7 @@ public class ActiveSpeciality {
     private Speciality speciality;
     private Long semester;
     private Boolean exam;
+    private Long hours;
     @ManyToOne(cascade = CascadeType.ALL)
     private CourseProject courseProject;
     @OneToMany(mappedBy = "activeSpecialityId", cascade = CascadeType.ALL)
@@ -79,5 +80,13 @@ public class ActiveSpeciality {
 
     public void setActiveTopics(List<ActiveTopic> activeTopics) {
         this.activeTopics = activeTopics;
+    }
+
+    public Long getHours() {
+        return hours;
+    }
+
+    public void setHours(Long hours) {
+        this.hours = hours;
     }
 }

@@ -20,7 +20,7 @@ public class ExplanatoryNote {
     private Date date;
     @ManyToOne(cascade = CascadeType.ALL)
     private Subject subject;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Competence> competences;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<DiagnosticTool> diagnosticTools;
