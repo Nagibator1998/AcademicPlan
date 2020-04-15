@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UniversityService} from '../../../service/university.service';
 import {University} from '../../../entity/university';
 import {ModalService} from '../../../service/modal.service';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-add-university',
@@ -10,9 +12,9 @@ import {ModalService} from '../../../service/modal.service';
 })
 export class AddUniversityComponent implements OnInit {
 
-  private university: University = new University();
+  university: University = new University();
 
-  constructor(private universityService: UniversityService, private modalService: ModalService) { }
+  constructor(private universityService: UniversityService, private modalService: ModalService, private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
@@ -20,10 +22,13 @@ export class AddUniversityComponent implements OnInit {
   addUniversity(event){
     this.universityService.save(this.university).subscribe(() => {
       this.university = new University();
-      event.target.disable = false;
-    }, () => {
-      event.target.disable = false;
-    })
+      event.target.disabled = false;
+      this.toastrService.success("Университет добавлен успешно");
+    }, error => {
+      event.target.disabled = false;
+      console.log(event);
+      this.toastrService.error("Произошла ошибка");
+    });
   }
 
   closeModal(){

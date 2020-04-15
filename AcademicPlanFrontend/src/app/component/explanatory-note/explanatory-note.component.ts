@@ -13,17 +13,17 @@ import {Router} from '@angular/router';
 })
 export class ExplanatoryNoteComponent implements OnInit {
 
-  private text: string = '';
-  private explanatoryNote: ExplanatoryNote;
-  private studentMustsKnow: StudentMust[] = [];
-  private addedStudentMustsKnow: StudentMust[] = [];
-  private changedStudentMustKnow: StudentMust = new StudentMust();
-  private studentMustsCan: StudentMust[] = [];
-  private addedStudentMustsCan: StudentMust[] = [];
-  private changedStudentMustCan: StudentMust = new StudentMust();
-  private studentMustsHave: StudentMust[] = [];
-  private addedStudentMustsHave: StudentMust[] = [];
-  private changedStudentMustHave: StudentMust = new StudentMust();
+  text: string = '';
+  explanatoryNote: ExplanatoryNote;
+  studentMustsKnow: StudentMust[] = [];
+  addedStudentMustsKnow: StudentMust[] = [];
+  changedStudentMustKnow: StudentMust = new StudentMust();
+  studentMustsCan: StudentMust[] = [];
+  addedStudentMustsCan: StudentMust[] = [];
+  changedStudentMustCan: StudentMust = new StudentMust();
+  studentMustsHave: StudentMust[] = [];
+  addedStudentMustsHave: StudentMust[] = [];
+  changedStudentMustHave: StudentMust = new StudentMust();
 
   constructor(private explanatoryNoteService: ExplanatoryNoteService, private studentMustService: StudentMustService,
               private router: Router) {

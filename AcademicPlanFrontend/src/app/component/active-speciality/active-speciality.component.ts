@@ -10,6 +10,7 @@ import {CourseProject} from '../../entity/course-project';
 import {ActiveSpecialityService} from '../../service/active-speciality.service';
 import {Router} from '@angular/router';
 import {ModalService} from '../../service/modal.service';
+import {ToastrModule} from 'ngx-toastr';
 
 @Component({
   selector: 'app-active-speciality',

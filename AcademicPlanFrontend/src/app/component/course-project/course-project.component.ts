@@ -15,9 +15,9 @@ import {Router} from '@angular/router';
 })
 export class CourseProjectComponent implements OnInit {
 
-  private courseProject: CourseProject;
-  private courseProjectTasks: CourseProjectTask[] = [];
-  private changedCourseProjectTask: CourseProjectTask = new CourseProjectTask();
+  courseProject: CourseProject;
+  courseProjectTasks: CourseProjectTask[] = [];
+  changedCourseProjectTask: CourseProjectTask = new CourseProjectTask();
 
   constructor(private courseProjectService: CourseProjectService, private courseProjectTaskService: CourseProjectTaskService,
               private router: Router) {

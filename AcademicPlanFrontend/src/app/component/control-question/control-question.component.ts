@@ -13,8 +13,8 @@ import {ControlQuestion} from '../../entity/control-question';
 })
 export class ControlQuestionComponent implements OnInit {
 
-  private explanatoryNote: ExplanatoryNote;
-  private controlQuestions: ControlQuestion[] = [];
+  explanatoryNote: ExplanatoryNote;
+  controlQuestions: ControlQuestion[] = [];
 
   constructor(private explanatoryNoteService: ExplanatoryNoteService, private controlQuestionService: ControlQuestionService,
               private router: Router) { }

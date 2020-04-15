@@ -13,10 +13,10 @@ import {Literature} from '../../entity/literature';
 })
 export class LiteratureComponent implements OnInit {
 
-  private literature: Literature[] = [];
-  private basicLiterature: Literature[] = [];
-  private additionalLiterature: Literature[] = [];
-  private explanatoryNote: ExplanatoryNote;
+  literature: Literature[] = [];
+  basicLiterature: Literature[] = [];
+  additionalLiterature: Literature[] = [];
+  explanatoryNote: ExplanatoryNote;
 
   constructor(private literatureService: LiteratureService, private explanatoryNoteService: ExplanatoryNoteService,
               private router: Router) {

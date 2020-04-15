@@ -13,10 +13,11 @@ import {SubjectService} from '../../service/subject.service';
 })
 export class SubjectComponent implements OnInit {
 
-  private subject: Subject = new Subject();
-  private explanatoryNote: ExplanatoryNote = new ExplanatoryNote();
-  constructor(private explanatoryNoteService: ExplanatoryNoteService, private router: Router, private subjectService: SubjectService) {}
+  subject: Subject = new Subject();
+  explanatoryNote: ExplanatoryNote = new ExplanatoryNote();
   subjects: Subject[] = [];
+  constructor(private explanatoryNoteService: ExplanatoryNoteService, private router: Router, private subjectService: SubjectService) {}
+
 
   ngOnInit() {
     this.subjectService.getAll().subscribe(data => {
@@ -27,7 +28,7 @@ export class SubjectComponent implements OnInit {
     })
   }
 
-  private createSubject(){
+  createSubject(){
     this.explanatoryNote.subject = this.subject;
     this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
       this.router.navigate([Constants.ACTIVE_SPECIALITY_ROUTE_PATH]);

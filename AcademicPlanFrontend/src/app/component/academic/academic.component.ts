@@ -13,10 +13,10 @@ import {Router} from '@angular/router';
 })
 export class AcademicComponent implements OnInit {
 
-  private academics: Academic[] = [];
-  private reviewers: Academic[] = [];
-  private creators: Academic[] = [];
-  private explanatoryNote: ExplanatoryNote;
+  academics: Academic[] = [];
+  reviewers: Academic[] = [];
+  creators: Academic[] = [];
+  explanatoryNote: ExplanatoryNote;
 
   constructor(private academicService: AcademicService, private explanatoryNoteService: ExplanatoryNoteService,
               private router: Router) {

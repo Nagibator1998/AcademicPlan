@@ -12,8 +12,8 @@ import {Constants} from '../../const/constants';
 })
 export class SectionComponent implements OnInit {
 
-  private sections: Section[] = [];
-  private sectionName: string = '';
+  sections: Section[] = [];
+  sectionName: string = '';
 
   constructor(private sectionService: SectionService, private router: Router) {
   }

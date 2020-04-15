@@ -15,10 +15,10 @@ import {DiagnosticToolService} from '../../service/diagnostic-tool.service';
 })
 export class DiagnosticToolComponent implements OnInit {
 
-  private diagnosticTools: DiagnosticTool[] = [];
-  private addedDiagnosticTools: DiagnosticTool[] = [];
-  private changedDiagnosticTool: DiagnosticTool = new DiagnosticTool();
-  private explanatoryNote: ExplanatoryNote;
+  diagnosticTools: DiagnosticTool[] = [];
+  addedDiagnosticTools: DiagnosticTool[] = [];
+  changedDiagnosticTool: DiagnosticTool = new DiagnosticTool();
+  explanatoryNote: ExplanatoryNote;
 
   constructor(private diagnosticToolService: DiagnosticToolService, private explanatoryNoteService: ExplanatoryNoteService,
               private router: Router) {

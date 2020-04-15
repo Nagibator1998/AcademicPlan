@@ -14,8 +14,8 @@ import {CourseProjectService} from '../../service/course-project.service';
 })
 export class LaboratoryWorkComponent implements OnInit {
 
-  private explanatoryNote: ExplanatoryNote;
-  private laboratoryWorks: LaboratoryWork[] = [];
+  explanatoryNote: ExplanatoryNote;
+  laboratoryWorks: LaboratoryWork[] = [];
 
   constructor(private explanatoryNoteService: ExplanatoryNoteService, private laboratoryWorkService: LaboratoryWorkService,
               private router: Router, private courseProjectService: CourseProjectService) {

@@ -14,7 +14,7 @@
                        [hidden]="faculties == null"
                        placeHolder="Факультет"></ng-autocomplete>
     </div>
-    <button class="btn" [hidden]="faculties == null"><img src="/assets/svg/plus.svg" alt="" width="16" height="16" title="Bootstrap"></button>
+    <button class="btn" (click)="openModal(addFaculty)" [hidden]="faculties == null"><img src="/assets/svg/plus.svg" alt="" width="16" height="16" title="Bootstrap"></button>
     <div class="col-lg-8 mt-2">
       <ng-autocomplete #ngDepartments [data]="departments" [searchKeyword]="'name'" [itemTemplate]="itemTemplate"
                        (selected)="setSpecialities($event)" (inputCleared)="clearSpecialities()"
@@ -79,4 +79,8 @@
 
 <ng-template #addUniversity>
   <app-add-university></app-add-university>
+</ng-template>
+
+<ng-template #addFaculty>
+  <app-add-faculty></app-add-faculty>
 </ng-template>

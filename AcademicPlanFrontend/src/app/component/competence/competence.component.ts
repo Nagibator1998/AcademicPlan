@@ -13,9 +13,9 @@ import {Router} from '@angular/router';
 })
 export class CompetenceComponent implements OnInit {
 
-  private competences: Competence[] = [];
-  private explanatoryNote: ExplanatoryNote;
-  private addedCompetences: Competence[] = [];
+  competences: Competence[] = [];
+  explanatoryNote: ExplanatoryNote;
+  addedCompetences: Competence[] = [];
 
   constructor(private explanatoryNoteService: ExplanatoryNoteService, private competenceService: CompetenceService,
               private router: Router) {

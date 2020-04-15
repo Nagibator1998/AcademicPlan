@@ -6,5 +6,6 @@ export class Faculty {
   name: string;
   abbreviation: string;
   departments: Department[];
+  universityId: number;
 
 }

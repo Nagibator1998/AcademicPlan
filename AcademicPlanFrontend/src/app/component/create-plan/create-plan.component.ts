@@ -11,7 +11,7 @@ import {Constants} from '../../const/constants';
 })
 export class CreatePlanComponent implements OnInit {
 
-  private explanatoryNote = new ExplanatoryNote();
+  explanatoryNote = new ExplanatoryNote();
 
   constructor(private explanatoryNoteService: ExplanatoryNoteService, private router: Router) {
   }
@@ -19,7 +19,7 @@ export class CreatePlanComponent implements OnInit {
   ngOnInit() {
   }
 
-  private createNote() {
+  createNote() {
     this.explanatoryNote.date = new Date();
     this.explanatoryNoteService.save(this.explanatoryNote).subscribe(data => {
       this.explanatoryNote = data;

@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
 })
 export class ActiveTopicComponent implements OnInit {
 
-  private explanatoryNote: ExplanatoryNote;
+  explanatoryNote: ExplanatoryNote;
 
   constructor(private explanatoryNoteService: ExplanatoryNoteService, private activeSpecialityService: ActiveSpecialityService,
               private router: Router) { }

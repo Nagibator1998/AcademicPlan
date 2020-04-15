@@ -14,10 +14,10 @@ import {ReportService} from '../../service/report.service';
 })
 export class IndependentWorkFormComponent implements OnInit {
 
-  private independentWorkForms: IndependentWorkForm[] = [];
-  private addedIndependentWorkForms: IndependentWorkForm[] = [];
-  private changedIndependentWorkForm: IndependentWorkForm = new IndependentWorkForm();
-  private explanatoryNote: ExplanatoryNote;
+  independentWorkForms: IndependentWorkForm[] = [];
+  addedIndependentWorkForms: IndependentWorkForm[] = [];
+  changedIndependentWorkForm: IndependentWorkForm = new IndependentWorkForm();
+  explanatoryNote: ExplanatoryNote;
 
   constructor(private independentWorkFormService: IndependentWorkFormService, private explanatoryNoteService: ExplanatoryNoteService,
               private router: Router, private reportService: ReportService) {

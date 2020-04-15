@@ -13,10 +13,10 @@ import {Router} from '@angular/router';
 })
 export class StandardComponent implements OnInit {
 
-  private standards: Standard[] = [];
-  private addedStandards: Standard[] = [];
-  private changedStandard: Standard = new Standard();
-  private explanatoryNote: ExplanatoryNote;
+  standards: Standard[] = [];
+  addedStandards: Standard[] = [];
+  changedStandard: Standard = new Standard();
+  explanatoryNote: ExplanatoryNote;
 
   constructor(private standardService: StandardService, private explanatoryNoteService: ExplanatoryNoteService,
               private router: Router) {
