@@ -497,3 +497,9 @@ tAcademicPlanBackend/src/main/java/com/bntu/fitr/poit/zholudev/diplom/util/query
 kAcademicPlanBackend/src/main/java/com/bntu/fitr/poit/zholudev/diplom/util/query/QueriesForAcademicPlan.java,8\3\83741c346a5c0ef609227896a6ae5b03c2e3884a
 ˆ
 XAcademicPlanBackend/src/main/java/com/bntu/fitr/poit/zholudev/diplom/util/sort/Sort.java,3\6\36eb50bb150c25b8819f73cd3d07f7369a087a0d
+e
+5AcademicPlanFrontend/src/app/service/modal.service.ts,d\5\d54f5caa6e4b92afe0db3597d43d88491c1322a3
+“
+cAcademicPlanFrontend/src/app/component/active-speciality/add-university/add-university.component.ts,a\7\a7ab25650ec6829fc8751dfcfae2b9d12a308fb5
+•
+eAcademicPlanFrontend/src/app/component/active-speciality/add-university/add-university.component.html,e\8\e8236754175fe8785b450c507396728e0a1e0d88

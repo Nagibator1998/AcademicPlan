@@ -1,8 +1,8 @@
 
-dsquid:UnusedPrivateMethod"3Remove this unused private "createDatabase" method.(¾´»Ðúÿÿÿÿ8âùºõ”.
+?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
 isquid:CommentedOutCodeLine#"<This block of commented-out lines of code should be removed.(¿ Öü8âùºõ”.
+dsquid:UnusedPrivateMethod"3Remove this unused private "createDatabase" method.(¾´»Ðúÿÿÿÿ8âùºõ”.
 Isquid:S4925"-Remove this "Class.forName()", it is useless.(¹µÖÁüÿÿÿÿ
+_squid:S2259"HA "NullPointerException" could be thrown; "connection" is nullable here.(ôêÂœ
 6squid:S2068" Remove this hard-coded password.(Œ€ð:
 ?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-_squid:S2259"HA "NullPointerException" could be thrown; "connection" is nullable here.(ôêÂœ

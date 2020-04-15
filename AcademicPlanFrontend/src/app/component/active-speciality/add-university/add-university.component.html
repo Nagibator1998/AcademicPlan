@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Добавить новый университет</h4>
+  <button type="button" class="close pull-right"
+          aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="form-group row justify-content-center">
+    <label for="form1" class="mt-1">Название университета</label>
+    <input type="text" id="form1" class="form-control mt-1 col-lg-10" name="name" [(ngModel)]="university.name"
+           #name="ngModel" required>
+
+  </div>
+  <div class="form-group row justify-content-center">
+    <label for="form2" class="mt-1">Аббревиатура</label>
+    <input type="text" id="form2" class="form-control mt-1 col-lg-10" name="abbreviation" [(ngModel)]="university.abbreviation"
+           #abbreviation="ngModel" required>
+  </div>
+
+</div>
+<div class="row justify-content-center">
+  <button class="btn btn-primary mb-3" [disabled]="name.invalid || abbreviation.invalid"
+          onClick="disabled = true"
+          (click)="addUniversity($event)">
+    Добавить
+  </button>
+</div>

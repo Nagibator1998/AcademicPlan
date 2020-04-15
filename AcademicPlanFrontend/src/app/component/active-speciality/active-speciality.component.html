@@ -6,6 +6,7 @@
                        (inputChanged)="setFaculties($event)"
                        placeHolder="Учебное заведение"></ng-autocomplete>
     </div>
+    <button class="btn" (click)="openModal(addUniversity)"><img src="/assets/svg/plus.svg" alt="" width="16" height="16" title="Bootstrap"></button>
     <div class="col-lg-8 mt-2">
       <ng-autocomplete #ngFaculties [data]="faculties" [searchKeyword]="'name'" [itemTemplate]="itemTemplate"
                        (selected)="setDepartments($event)" (inputCleared)="clearDepartments()"
@@ -13,6 +14,7 @@
                        [hidden]="faculties == null"
                        placeHolder="Факультет"></ng-autocomplete>
     </div>
+    <button class="btn" [hidden]="faculties == null"><img src="/assets/svg/plus.svg" alt="" width="16" height="16" title="Bootstrap"></button>
     <div class="col-lg-8 mt-2">
       <ng-autocomplete #ngDepartments [data]="departments" [searchKeyword]="'name'" [itemTemplate]="itemTemplate"
                        (selected)="setSpecialities($event)" (inputCleared)="clearSpecialities()"
@@ -20,12 +22,14 @@
                        [hidden]="departments == null"
                        placeHolder="Кафедра"></ng-autocomplete>
     </div>
+    <button class="btn" [hidden]="departments == null"><img src="/assets/svg/plus.svg" alt="" width="16" height="16" title="Bootstrap"></button>
     <div class="col-lg-8 mt-2">
       <ng-autocomplete #ngSpecialities [data]="specialities" [searchKeyword]="'name'"
                        [itemTemplate]="specialityTemplate"
                        placeHolder="Специальность" [hidden]="specialities == null"
                        (selected)="setActiveSpecialities($event)"></ng-autocomplete>
     </div>
+    <button class="btn" [hidden]="specialities == null"><img src="/assets/svg/plus.svg" alt="" width="16" height="16" title="Bootstrap"></button>
   </div>
   <table class="table text-center">
     <thead class="thead-light">
@@ -71,4 +75,8 @@
 
 <ng-template #itemTemplate let-item>
   <a [innerHTML]="item.name + ' (' + item.abbreviation + ')'"></a>
+</ng-template>
+
+<ng-template #addUniversity>
+  <app-add-university></app-add-university>
 </ng-template>

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {UniversityService} from '../../service/university.service';
 import {University} from '../../entity/university';
 import {Faculty} from '../../entity/faculty';
@@ -9,9 +9,10 @@ import {Constants} from '../../const/constants';
 import {CourseProject} from '../../entity/course-project';
 import {ActiveSpecialityService} from '../../service/active-speciality.service';
 import {Router} from '@angular/router';
+import {ModalService} from '../../service/modal.service';
 
 @Component({
-  selector: 'app-department',
+  selector: 'app-active-speciality',
   templateUrl: './active-speciality.component.html',
   styleUrls: ['./active-speciality.component.css']
 })
@@ -28,7 +29,7 @@ export class ActiveSpecialityComponent implements OnInit {
   @ViewChild('ngSpecialities', {static: false}) specialitiesForm;
 
   constructor(private universityService: UniversityService, private activeSpecialityService: ActiveSpecialityService,
-              private router: Router) {
+              private router: Router, private modalService: ModalService) {
   }
 
   ngOnInit() {
@@ -91,6 +92,10 @@ export class ActiveSpecialityComponent implements OnInit {
       this.activeSpecialities = data;
       this.router.navigate([Constants.ACADEMIC_ROUTE_PATH]);
     });
+  }
+
+  openModal(template: TemplateRef<any>){
+    this.modalService.openModal(template);
   }
 
 }

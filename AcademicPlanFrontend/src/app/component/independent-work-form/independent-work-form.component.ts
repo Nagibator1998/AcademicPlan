@@ -57,7 +57,7 @@ export class IndependentWorkFormComponent implements OnInit {
     this.explanatoryNoteService.update(this.explanatoryNote).subscribe(data => {
       this.explanatoryNote = data;
       this.reportService.get(this.explanatoryNote.id).subscribe();
-
+      this.router.navigate([Constants.LITERATURE_PATH]);
     });
   }
 

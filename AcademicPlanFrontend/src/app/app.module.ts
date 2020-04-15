@@ -26,6 +26,11 @@ import { DiagnosticToolComponent } from './component/diagnostic-tool/diagnostic-
 import { ControlQuestionComponent } from './component/control-question/control-question.component';
 import { IndependentWorkFormComponent } from './component/independent-work-form/independent-work-form.component';
 import { LiteratureComponent } from './component/literature/literature.component';
+import { AddUniversityComponent } from './component/active-speciality/add-university/add-university.component';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import {ModalModule} from 'ngx-bootstrap/modal';
+import {ToastrModule} from 'ngx-toastr';
 
 
 const routes: Routes = [
@@ -69,7 +74,8 @@ const routes: Routes = [
     DiagnosticToolComponent,
     ControlQuestionComponent,
     IndependentWorkFormComponent,
-    LiteratureComponent
+    LiteratureComponent,
+    AddUniversityComponent
   ],
   exports: [RouterModule],
   imports: [
@@ -79,7 +85,11 @@ const routes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

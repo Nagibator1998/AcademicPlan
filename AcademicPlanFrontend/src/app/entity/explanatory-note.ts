@@ -9,6 +9,7 @@ import {LaboratoryWork} from './laboratory-work';
 import {ControlQuestion} from './control-question';
 import {DiagnosticTool} from './diagnostic-tool';
 import {IndependentWorkForm} from './independent-work-form';
+import {Literature} from './literature';
 
 export class ExplanatoryNote {
 
@@ -28,4 +29,6 @@ export class ExplanatoryNote {
   controlQuestions: ControlQuestion[];
   diagnosticTools: DiagnosticTool[];
   independentWorkForms: IndependentWorkForm[];
+  basicLiterature: Literature[];
+  additionalLiterature: Literature[];
 }
