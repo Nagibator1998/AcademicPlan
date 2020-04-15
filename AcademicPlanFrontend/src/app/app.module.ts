@@ -89,7 +89,10 @@ const routes: Routes = [
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-top-left'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

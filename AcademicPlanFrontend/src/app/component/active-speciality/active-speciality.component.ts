@@ -24,9 +24,9 @@ export class ActiveSpecialityComponent implements OnInit {
   specialities: Speciality[] = null;
   activeSpecialities: ActiveSpeciality[] = null;
   courseProject: CourseProject = new CourseProject();
-  @ViewChild('ngFaculties', {static: false}) facultiesForm;
-  @ViewChild('ngDepartments', {static: false}) departmentsForm;
-  @ViewChild('ngSpecialities', {static: false}) specialitiesForm;
+  @ViewChild('ngFaculties') facultiesForm;
+  @ViewChild('ngDepartments') departmentsForm;
+  @ViewChild('ngSpecialities') specialitiesForm;
 
   constructor(private universityService: UniversityService, private activeSpecialityService: ActiveSpecialityService,
               private router: Router, private modalService: ModalService) {
