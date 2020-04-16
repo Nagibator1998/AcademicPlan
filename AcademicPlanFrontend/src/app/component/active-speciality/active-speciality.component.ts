@@ -10,7 +10,6 @@ import {CourseProject} from '../../entity/course-project';
 import {ActiveSpecialityService} from '../../service/active-speciality.service';
 import {Router} from '@angular/router';
 import {ModalService} from '../../service/modal.service';
-import {ToastrModule} from 'ngx-toastr';
 
 @Component({
   selector: 'app-active-speciality',
@@ -25,9 +24,10 @@ export class ActiveSpecialityComponent implements OnInit {
   specialities: Speciality[] = null;
   activeSpecialities: ActiveSpeciality[] = null;
   courseProject: CourseProject = new CourseProject();
-  @ViewChild('ngFaculties') facultiesForm;
-  @ViewChild('ngDepartments') departmentsForm;
-  @ViewChild('ngSpecialities') specialitiesForm;
+
+  facultyText: string = "";
+  departmentText: string = "";
+  specialityText: string = "";
 
   constructor(private universityService: UniversityService, private activeSpecialityService: ActiveSpecialityService,
               private router: Router, private modalService: ModalService) {
@@ -40,32 +40,32 @@ export class ActiveSpecialityComponent implements OnInit {
   }
 
   setFaculties(item: University) {
-    this.faculties = item.faculties == undefined ? null : item.faculties;
+    this.faculties = item.faculties;
   }
 
   clearFaculties() {
     this.clearDepartments();
-    this.facultiesForm.clear();
+    this.facultyText = "";
     this.faculties = null;
   }
 
   setDepartments(item: Faculty) {
-    this.departments = item.departments == undefined ? null : item.departments;
+    this.departments = item.departments;
   }
 
   clearDepartments() {
     this.clearSpecialities();
-    this.departmentsForm.clear();
+    this.departmentText = "";
     this.departments = null;
   }
 
   setSpecialities(item: Department) {
-    this.specialities = item.specialities == undefined ? null : item.specialities;
+    this.specialities = item.specialities;
     this.activeSpecialities = [];
   }
 
   clearSpecialities() {
-    this.specialitiesForm.clear();
+    this.specialityText = "";
     this.specialities = null;
   }
 
@@ -95,8 +95,8 @@ export class ActiveSpecialityComponent implements OnInit {
     });
   }
 
-  openModal(template: TemplateRef<any>){
-    this.modalService.openModal(template);
+  openModal(template: TemplateRef<any>) {
+    this.modalService.openModal(template, this);
   }
 
 }

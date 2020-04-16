@@ -26,12 +26,11 @@ export class AddUniversityComponent implements OnInit {
       this.toastrService.success("Университет добавлен успешно");
     }, error => {
       event.target.disabled = false;
-      console.log(event);
       this.toastrService.error("Произошла ошибка");
     });
   }
 
   closeModal(){
-    this.modalService.closeModal();
+    this.modalService.closeModalWithReloadParentOnInit();
   }
 }

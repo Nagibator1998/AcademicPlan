@@ -34,13 +34,12 @@ export class AddFacultyComponent implements OnInit {
       this.toastrService.success("Факультет добавлен успешно");
     }, () => {
       event.target.disabled = false;
-      console.log(event);
       this.toastrService.error("Произошла ошибка");
     })
   }
 
   closeModal(){
-    this.modalService.closeModal();
+    this.modalService.closeModalWithReloadParentOnInit();
   }
 
   removeUniversityFromFaculty(){

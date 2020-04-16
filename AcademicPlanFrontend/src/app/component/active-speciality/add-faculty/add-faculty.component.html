@@ -7,7 +7,7 @@
 </div>
 <div class="modal-body">
   <div class="form-group row justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <ng-autocomplete [data]="universities" [searchKeyword]="'name'" [itemTemplate]="itemTemplate"
                        (selected)="setUniversityToFaculty($event)" (inputCleared)="removeUniversityFromFaculty()"
                        (inputChanged)="removeUniversityFromFaculty()"
@@ -17,19 +17,19 @@
   <div class="form-group row justify-content-center">
     <label for="form1" class="mt-1">Название факультета</label>
     <input type="text" id="form1" class="form-control mt-1 col-lg-10" name="name" [(ngModel)]="faculty.name"
-           #name="ngModel" required>
+           #name="ngModel" required [disabled]="faculty.universityId == null">
 
   </div>
   <div class="form-group row justify-content-center">
     <label for="form2" class="mt-1">Аббревиатура</label>
     <input type="text" id="form2" class="form-control mt-1 col-lg-10" name="abbreviation"
            [(ngModel)]="faculty.abbreviation"
-           #abbreviation="ngModel" required>
+           #abbreviation="ngModel" required [disabled]="faculty.universityId == null">
   </div>
 
 </div>
 <div class="row justify-content-center">
-  <button class="btn btn-primary mb-3" [disabled]="name.invalid || abbreviation.invalid"
+  <button class="btn btn-primary mb-3" [disabled]="name.invalid || abbreviation.invalid || (name.disabled && abbreviation.disabled)"
           onClick="this.disabled = true"
           (click)="addFaculty($event)">
     Добавить

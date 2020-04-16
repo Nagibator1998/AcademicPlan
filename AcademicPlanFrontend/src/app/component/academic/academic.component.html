@@ -5,6 +5,7 @@
                        (selected)="setReviewer($event)"
                        placeHolder="Рецензент"></ng-autocomplete>
     </div>
+    <button class="btn" (click)="openModal(addAcademic)"><img src="/assets/svg/plus.svg" alt="" width="16" height="16" title="Bootstrap"></button>
   </div>
   <table class="table text-center">
     <thead class="thead-light">
@@ -80,3 +81,6 @@
   <a [innerHTML]="item.fullName + ' (' + item.academicDegree.name + ', ' + item.academicRank.name + ')'"></a>
 </ng-template>
 
+<ng-template #addAcademic>
+  <app-add-academic></app-add-academic>
+</ng-template>

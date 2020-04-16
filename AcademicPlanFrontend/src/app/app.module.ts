@@ -32,6 +32,9 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {ToastrModule} from 'ngx-toastr';
 import { AddFacultyComponent } from './component/active-speciality/add-faculty/add-faculty.component';
+import { AddDepartmentComponent } from './component/active-speciality/add-department/add-department.component';
+import { AddSpecialityComponent } from './component/active-speciality/add-speciality/add-speciality.component';
+import { AddAcademicComponent } from './component/academic/add-academic/add-academic.component';
 
 
 const routes: Routes = [
@@ -77,7 +80,10 @@ const routes: Routes = [
     IndependentWorkFormComponent,
     LiteratureComponent,
     AddUniversityComponent,
-    AddFacultyComponent
+    AddFacultyComponent,
+    AddDepartmentComponent,
+    AddSpecialityComponent,
+    AddAcademicComponent
   ],
   exports: [RouterModule],
   imports: [

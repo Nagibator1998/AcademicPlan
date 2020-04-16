@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {AcademicService} from '../../service/academic.service';
 import {Academic} from '../../entity/academic';
 import {ExplanatoryNoteService} from '../../service/explanatory-note.service';
 import {ExplanatoryNote} from '../../entity/explanatory-note';
 import {Constants} from '../../const/constants';
 import {Router} from '@angular/router';
+import {ModalService} from '../../service/modal.service';
 
 @Component({
   selector: 'app-academic',
@@ -19,7 +20,7 @@ export class AcademicComponent implements OnInit {
   explanatoryNote: ExplanatoryNote;
 
   constructor(private academicService: AcademicService, private explanatoryNoteService: ExplanatoryNoteService,
-              private router: Router) {
+              private router: Router, private modalService: ModalService) {
   }
 
   ngOnInit() {
@@ -58,5 +59,9 @@ export class AcademicComponent implements OnInit {
       this.explanatoryNote = data;
       this.router.navigate([Constants.STANDARD_ROUTE_PATH]);
     });
+  }
+
+  openModal(template: TemplateRef<any>){
+    this.modalService.openModal(template, this);
   }
 }

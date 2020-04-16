@@ -4,7 +4,8 @@ export class Speciality {
   name: string;
   abbreviation: string;
   code: string;
-  direction: boolean;
-  fullTime: boolean;
+  direction: boolean = false;
+  fullTime: boolean = true;
+  departmentId: number;
 
 }
